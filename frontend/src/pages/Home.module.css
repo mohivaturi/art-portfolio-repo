@@ -1,0 +1,112 @@
+.hero {
+  flex: 1;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  align-items: center;
+  gap: 4rem;
+  padding: 6rem clamp(2rem, 6vw, 6rem);
+}
+
+/* --- left: signature + name --- */
+.masthead {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.signature {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 1.1;
+  padding-bottom: 0.1em; /* descender clearance for italic */
+  color: var(--ink);
+}
+
+.name {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.discipline {
+  margin: 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim);
+}
+
+/* --- right: artwork + CTA --- */
+.plate {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.art {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.02);
+  border: 1px solid var(--line);
+}
+
+.enter {
+  align-self: stretch;
+  text-align: center;
+  padding: 0.95rem 1.5rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.enter:hover {
+  background-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* --- entrance motion (MOTION_INTENSITY 3): load fade-up only --- */
+@media (prefers-reduced-motion: no-preference) {
+  .masthead,
+  .plate {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .plate {
+    animation-delay: 0.12s;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 3rem clamp(1.25rem, 5vw, 3rem);
+    justify-items: start;
+  }
+  .plate {
+    max-width: 22rem;
+  }
+}
