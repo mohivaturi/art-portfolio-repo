@@ -1,0 +1,22 @@
+# Node / frontend
+node_modules/
+dist/
+*.local
+npm-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# CDK
+cdk.out/
+.cdk.staging/
+
+# Env / secrets
+.env*
+
+# OS
+.DS_Store
