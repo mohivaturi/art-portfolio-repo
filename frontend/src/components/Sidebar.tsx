@@ -30,16 +30,6 @@ export default function Sidebar() {
           </NavLink>
         ))}
       </nav>
-
-      {/* TODO: your real Instagram / social handle */}
-      <a
-        className={styles.social}
-        href="https://instagram.com/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Instagram
-      </a>
     </aside>
   )
 }

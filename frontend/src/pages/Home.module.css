@@ -12,6 +12,7 @@
 .masthead {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 1.25rem;
 }
 
@@ -41,13 +42,9 @@
   color: var(--ink-dim);
 }
 
-/* --- right: artwork + CTA --- */
+/* --- right: artwork --- */
 .plate {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: flex-start;
 }
 
 .art {
@@ -59,9 +56,8 @@
 }
 
 .enter {
-  align-self: stretch;
-  text-align: center;
-  padding: 0.95rem 1.5rem;
+  margin-top: 0.75rem;
+  padding: 0.9rem 2rem;
   border: 1px solid var(--accent);
   color: var(--accent);
   font-size: 0.78rem;
