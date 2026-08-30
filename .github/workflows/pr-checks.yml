@@ -1,0 +1,49 @@
+name: pr-checks
+
+on:
+  pull_request:
+    branches: [dev, main]
+
+permissions:
+  contents: read
+
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - working-directory: frontend
+        run: |
+          npm ci
+          npm run lint
+          npm run build
+
+  infra:
+    runs-on: ubuntu-latest
+    # No AWS creds: synth against fixed account/region so it is deterministic.
+    env:
+      CDK_DEFAULT_ACCOUNT: "205114761821"
+      CDK_DEFAULT_REGION: us-east-1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Set up infra toolchain
+        working-directory: infra
+        run: |
+          npm i -g aws-cdk
+          python -m venv .venv
+          .venv/bin/pip install --quiet -r requirements.txt -r requirements-dev.txt
+      - name: Unit tests
+        working-directory: infra
+        run: .venv/bin/python -m pytest -q
+      - name: cdk synth
+        working-directory: infra
+        run: cdk synth --quiet

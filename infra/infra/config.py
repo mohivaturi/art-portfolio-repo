@@ -23,3 +23,13 @@ ENVIRONMENTS: dict[str, EnvConfig] = {
     "dev": DEV,
     "prod": PROD,
 }
+
+# --- CI/CD (GitHub Actions via OIDC, ARCHITECTURE.md sections 4 and 6) ---
+GITHUB_OWNER = "mohivaturi"
+GITHUB_REPO = "art-portfolio-repo"
+
+# What GitHub's OIDC token "sub" claim must match for each deploy role.
+# dev deploys run on a push to the `dev` branch (no GitHub environment);
+# prod deploys run through the protected `production` environment.
+GITHUB_DEV_SUB = f"repo:{GITHUB_OWNER}/{GITHUB_REPO}:ref:refs/heads/dev"
+GITHUB_PROD_SUB = f"repo:{GITHUB_OWNER}/{GITHUB_REPO}:environment:production"

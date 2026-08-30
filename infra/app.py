@@ -3,6 +3,7 @@ import os
 
 import aws_cdk as cdk
 
+from infra.cicd_stack import PortfolioCicdStack
 from infra.config import ENVIRONMENTS
 from infra.portfolio_stack import PortfolioStack
 
@@ -22,5 +23,7 @@ for env_name, env_config in ENVIRONMENTS.items():
         env_config=env_config,
         env=env,
     )
+
+PortfolioCicdStack(app, "PortfolioCicdStack", env=env)
 
 app.synth()

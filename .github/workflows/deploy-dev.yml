@@ -1,0 +1,79 @@
+name: deploy-dev
+
+on:
+  push:
+    branches: [dev]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-dev
+  cancel-in-progress: false
+
+permissions:
+  id-token: write # assume the AWS role via OIDC
+  contents: read
+
+env:
+  AWS_REGION: us-east-1
+  DEPLOY_ROLE_ARN: arn:aws:iam::205114761821:role/portfolio-dev-deploy-role
+  STACK: PortfolioStack-dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build frontend
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run build
+
+      - name: Set up infra toolchain
+        working-directory: infra
+        run: |
+          npm i -g aws-cdk
+          python -m venv .venv
+          .venv/bin/pip install --quiet -r requirements.txt
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: cdk deploy
+        working-directory: infra
+        run: cdk deploy "$STACK" --require-approval never
+
+      - name: Read stack outputs
+        id: out
+        run: |
+          get() { aws cloudformation describe-stacks --stack-name "$STACK" \
+            --query "Stacks[0].Outputs[?OutputKey=='$1'].OutputValue" --output text; }
+          {
+            echo "bucket=$(get BucketName)"
+            echo "dist=$(get DistributionId)"
+            echo "url=$(get SiteURL)"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Sync site to S3
+        run: aws s3 sync frontend/dist/ "s3://${{ steps.out.outputs.bucket }}/" --delete
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ steps.out.outputs.dist }}" \
+            --paths "/*"
+
+      - name: Summary
+        run: echo "Deployed **$STACK** -> ${{ steps.out.outputs.url }}" >> "$GITHUB_STEP_SUMMARY"
