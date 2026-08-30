@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import artVideo from '../assets/mahadev.mp4'
 import artPoster from '../assets/mahadev-poster.jpg'
+import signature from '../assets/signature.png'
 import styles from './Home.module.css'
 
 export default function Home() {
@@ -21,12 +22,7 @@ export default function Home() {
       </div>
 
       <div className={styles.masthead}>
-        {/* TODO: replace this block with your signature image
-            (transparent PNG/SVG, ~640x200). Keep the name caption below. */}
-        <div className={styles.signature} aria-hidden="true">
-          Mohith Ivaturi
-        </div>
-        {/* TODO: your name */}
+        <img className={styles.signature} src={signature} alt="" />
         <h1 className={styles.name}>Mohith Ivaturi</h1>
         <Link to="/collections" className={styles.enter}>
           Enter the Gallery

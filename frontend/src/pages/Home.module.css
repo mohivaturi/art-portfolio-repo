@@ -75,12 +75,10 @@
 }
 
 .signature {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  line-height: 1.1;
-  padding-bottom: 0.1em; /* descender clearance for italic */
-  color: var(--ink);
+  display: block;
+  width: clamp(15rem, 32vw, 24rem);
+  height: auto;
+  margin-left: -0.15rem; /* optically align the ink with the name below */
 }
 
 .name {
@@ -179,6 +177,6 @@
     padding: 1.5rem clamp(1.25rem, 5vw, 3rem) 0;
   }
   .signature {
-    font-size: 2.4rem;
+    width: min(72vw, 18rem);
   }
 }
