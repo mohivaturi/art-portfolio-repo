@@ -28,10 +28,13 @@ ENVIRONMENTS: dict[str, EnvConfig] = {
 GITHUB_OWNER = "mohivaturi"
 GITHUB_REPO = "art-portfolio-repo"
 
-# What GitHub's OIDC token "sub" claim must match for each deploy role.
-# dev deploys run on a push to the `dev` branch (no GitHub environment);
-# prod deploys run through the protected `production` environment.
-# TODO: tighten GITHUB_DEV_SUB back to ":ref:refs/heads/dev" once the debug
-# step confirms the exact sub GitHub sends.
-GITHUB_DEV_SUB = f"repo:{GITHUB_OWNER}/{GITHUB_REPO}:*"
-GITHUB_PROD_SUB = f"repo:{GITHUB_OWNER}/{GITHUB_REPO}:environment:production"
+# GitHub now embeds immutable numeric IDs in the OIDC token (the `sub` claim
+# reads `repo:owner@<owner_id>/repo@<repo_id>:...`). We match on those stable
+# IDs instead of parsing `sub`, so the trust survives an account/repo rename.
+GITHUB_OWNER_ID = "140132880"
+GITHUB_REPO_ID = "1351519081"
+
+# Extra scoping per environment: dev = push to the `dev` branch,
+# prod = the protected `production` GitHub environment.
+GITHUB_DEV_REF = "refs/heads/dev"
+GITHUB_PROD_ENVIRONMENT = "production"

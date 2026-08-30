@@ -17,11 +17,14 @@ from constructs import Construct
 
 from infra.config import (
     ENVIRONMENTS,
-    GITHUB_DEV_SUB,
-    GITHUB_PROD_SUB,
+    GITHUB_DEV_REF,
+    GITHUB_OWNER_ID,
+    GITHUB_PROD_ENVIRONMENT,
+    GITHUB_REPO_ID,
 )
 
 _GITHUB_OIDC_URL = "https://token.actions.githubusercontent.com"
+_OIDC = "token.actions.githubusercontent.com"
 
 
 class PortfolioCicdStack(Stack):
@@ -35,30 +38,36 @@ class PortfolioCicdStack(Stack):
             client_ids=["sts.amazonaws.com"],
         )
 
-        self._make_role("dev", provider, GITHUB_DEV_SUB, sub_match="StringLike")
-        self._make_role("prod", provider, GITHUB_PROD_SUB, sub_match="StringEquals")
+        # Match GitHub's immutable numeric IDs (rename-proof) + the audience.
+        base_conditions = {
+            f"{_OIDC}:aud": "sts.amazonaws.com",
+            f"{_OIDC}:repository_owner_id": GITHUB_OWNER_ID,
+            f"{_OIDC}:repository_id": GITHUB_REPO_ID,
+        }
+
+        self._make_role(
+            "dev",
+            provider,
+            {**base_conditions, f"{_OIDC}:ref": GITHUB_DEV_REF},
+        )
+        self._make_role(
+            "prod",
+            provider,
+            {**base_conditions, f"{_OIDC}:environment": GITHUB_PROD_ENVIRONMENT},
+        )
 
     def _make_role(
         self,
         env_name: str,
         provider: iam.OpenIdConnectProvider,
-        sub: str,
-        *,
-        sub_match: str,
+        string_equals: dict[str, str],
     ) -> None:
         env_config = ENVIRONMENTS[env_name]
         bucket_arn = f"arn:aws:s3:::{env_config.prefix}-site-{self.account}"
 
         principal = iam.OpenIdConnectPrincipal(
             provider,
-            conditions={
-                "StringEquals": {
-                    "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
-                },
-                sub_match: {
-                    "token.actions.githubusercontent.com:sub": sub,
-                },
-            },
+            conditions={"StringEquals": string_equals},
         )
 
         role = iam.Role(
