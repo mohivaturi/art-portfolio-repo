@@ -28,7 +28,6 @@ export default function Home() {
         </div>
         {/* TODO: your name */}
         <h1 className={styles.name}>Mohith Ivaturi</h1>
-        <p className={styles.discipline}>Digital illustration, devotional studies</p>
         <Link to="/collections" className={styles.enter}>
           Enter the Gallery
         </Link>

@@ -93,13 +93,6 @@
   color: var(--ink);
 }
 
-.discipline {
-  margin: 0;
-  font-size: 0.82rem;
-  letter-spacing: 0.06em;
-  color: var(--ink-dim);
-}
-
 .enter {
   margin-top: 0.75rem;
   padding: 0.9rem 2rem;
