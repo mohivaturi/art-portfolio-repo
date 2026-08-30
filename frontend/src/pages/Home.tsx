@@ -1,12 +1,22 @@
 import { Link } from 'react-router-dom'
-import art from '../assets/mahadev-face.png'
+import artVideo from '../assets/mahadev.mp4'
+import artPoster from '../assets/mahadev-poster.jpg'
 import styles from './Home.module.css'
 
 export default function Home() {
   return (
     <section className={styles.hero}>
       <div className={styles.plate} aria-hidden="true">
-        <img className={styles.art} src={art} alt="" />
+        <video
+          className={styles.art}
+          src={artVideo}
+          poster={artPoster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
         <span className={styles.tint} />
       </div>
 

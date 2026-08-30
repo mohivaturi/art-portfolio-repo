@@ -20,3 +20,6 @@ cdk.out/
 
 # OS
 .DS_Store
+
+# Original art masters - kept locally, not in git (large)
+frontend/art-source/

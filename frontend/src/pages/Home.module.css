@@ -20,6 +20,7 @@
 
 .art {
   position: absolute;
+  display: block;
   right: -9%;
   top: 48.5%;
   transform: translateY(-50%);
