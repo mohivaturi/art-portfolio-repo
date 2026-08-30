@@ -1,9 +1,9 @@
 """Static-site stack: private S3 bucket + CloudFront (OAC).
 
 No Lambda / API Gateway yet — that arrives in ARCHITECTURE.md step 7.
+Bucket content is pushed separately (`aws s3 sync` locally, GitHub Actions
+later); CDK does not manage the objects.
 """
-
-import os
 
 from aws_cdk import (
     CfnOutput,
@@ -13,16 +13,10 @@ from aws_cdk import (
     aws_cloudfront as cloudfront,
     aws_cloudfront_origins as origins,
     aws_s3 as s3,
-    aws_s3_deployment as s3deploy,
 )
 from constructs import Construct
 
 from infra.config import EnvConfig
-
-# repo-root/placeholder-site — swapped for the real frontend build in step 6
-_PLACEHOLDER_DIR = os.path.join(
-    os.path.dirname(__file__), "..", "..", "placeholder-site"
-)
 
 
 class PortfolioStack(Stack):
@@ -72,16 +66,6 @@ class PortfolioStack(Stack):
                 )
                 for status in (403, 404)
             ],
-        )
-
-        # --- Placeholder content (removed once CI syncs the real build) ---
-        s3deploy.BucketDeployment(
-            self,
-            "PlaceholderContent",
-            sources=[s3deploy.Source.asset(_PLACEHOLDER_DIR)],
-            destination_bucket=bucket,
-            distribution=distribution,
-            distribution_paths=["/*"],
         )
 
         # --- Outputs -----------------------------------------------------
