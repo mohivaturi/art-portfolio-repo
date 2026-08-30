@@ -1,15 +1,53 @@
 .hero {
+  position: relative;
   flex: 1;
   min-height: 100dvh;
-  display: grid;
-  grid-template-columns: 1fr 0.85fr;
+  display: flex;
   align-items: center;
-  gap: 4rem;
   padding: 6rem clamp(2rem, 6vw, 6rem);
+  overflow: hidden;
+}
+
+/* --- right: artwork, enlarged and bleeding off the edge --- */
+.plate {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: min(64%, 880px);
+  pointer-events: none;
+}
+
+.art {
+  position: absolute;
+  right: -13%;
+  top: 46%;
+  transform: translateY(-50%);
+  height: 150%;
+  width: auto;
+  max-width: none;
+  filter: saturate(0.9);
+}
+
+/* dark veil: flat tint over the art + a fade into the page on the left */
+.tint {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to right,
+      var(--bg) 0%,
+      rgba(11, 10, 9, 0.82) 26%,
+      rgba(11, 10, 9, 0.5) 46%,
+      rgba(11, 10, 9, 0.16) 70%,
+      rgba(11, 10, 9, 0.1) 100%
+    ),
+    rgba(11, 10, 9, 0.22);
 }
 
 /* --- left: signature + name --- */
 .masthead {
+  position: relative;
+  z-index: 2;
+  max-width: 34rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -42,19 +80,6 @@
   color: var(--ink-dim);
 }
 
-/* --- right: artwork --- */
-.plate {
-  margin: 0;
-}
-
-.art {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  filter: grayscale(1) contrast(1.02);
-  border: 1px solid var(--line);
-}
-
 .enter {
   margin-top: 0.75rem;
   padding: 0.9rem 2rem;
@@ -76,12 +101,12 @@
 
 /* --- entrance motion (MOTION_INTENSITY 3): load fade-up only --- */
 @media (prefers-reduced-motion: no-preference) {
-  .masthead,
-  .plate {
+  .masthead {
     animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   .plate {
-    animation-delay: 0.12s;
+    animation: fade 1.1s ease both;
+    animation-delay: 0.1s;
   }
   @keyframes rise {
     from {
@@ -93,16 +118,52 @@
       transform: translateY(0);
     }
   }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 @media (max-width: 900px) {
   .hero {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding: 3rem clamp(1.25rem, 5vw, 3rem);
-    justify-items: start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 0 0 3rem;
   }
   .plate {
-    max-width: 22rem;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 42vh;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .art {
+    right: 50%;
+    top: -10%;
+    transform: translateX(42%);
+    height: 156%;
+  }
+  .tint {
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 10, 9, 0.12) 0%,
+      rgba(11, 10, 9, 0.32) 58%,
+      rgba(11, 10, 9, 0.78) 84%,
+      var(--bg) 100%
+    );
+  }
+  .masthead {
+    max-width: 100%;
+    gap: 0.7rem;
+    padding: 1.75rem clamp(1.25rem, 5vw, 3rem) 0;
+  }
+  .signature {
+    font-size: 2.4rem;
   }
 }

@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom'
+import art from '../assets/ganpathi-maharaj.png'
 import styles from './Home.module.css'
 
 export default function Home() {
   return (
     <section className={styles.hero}>
+      <div className={styles.plate} aria-hidden="true">
+        <img className={styles.art} src={art} alt="" />
+        <span className={styles.tint} />
+      </div>
+
       <div className={styles.masthead}>
         {/* TODO: replace this block with your signature image
             (transparent PNG/SVG, ~640x200). Keep the name caption below. */}
@@ -17,18 +23,6 @@ export default function Home() {
           Enter the Gallery
         </Link>
       </div>
-
-      <figure className={styles.plate}>
-        {/* TODO: replace with a real piece - portrait crop, ~900x1150 */}
-        <img
-          className={styles.art}
-          src="https://picsum.photos/seed/mi-deity-study/900/1150?grayscale"
-          alt="Placeholder for a featured illustration"
-          width={900}
-          height={1150}
-          loading="eager"
-        />
-      </figure>
     </section>
   )
 }
