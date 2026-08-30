@@ -18,8 +18,10 @@ from constructs import Construct
 from infra.config import (
     ENVIRONMENTS,
     GITHUB_DEV_REF,
+    GITHUB_DEV_SUB,
     GITHUB_OWNER_ID,
     GITHUB_PROD_ENVIRONMENT,
+    GITHUB_PROD_SUB,
     GITHUB_REPO_ID,
 )
 
@@ -48,26 +50,39 @@ class PortfolioCicdStack(Stack):
         self._make_role(
             "dev",
             provider,
-            {**base_conditions, f"{_OIDC}:ref": GITHUB_DEV_REF},
+            string_equals={**base_conditions, f"{_OIDC}:ref": GITHUB_DEV_REF},
+            sub_like=GITHUB_DEV_SUB,
         )
         self._make_role(
             "prod",
             provider,
-            {**base_conditions, f"{_OIDC}:environment": GITHUB_PROD_ENVIRONMENT},
+            string_equals={
+                **base_conditions,
+                f"{_OIDC}:environment": GITHUB_PROD_ENVIRONMENT,
+            },
+            sub_like=GITHUB_PROD_SUB,
         )
 
     def _make_role(
         self,
         env_name: str,
         provider: iam.OpenIdConnectProvider,
+        *,
         string_equals: dict[str, str],
+        sub_like: str,
     ) -> None:
         env_config = ENVIRONMENTS[env_name]
         bucket_arn = f"arn:aws:s3:::{env_config.prefix}-site-{self.account}"
 
         principal = iam.OpenIdConnectPrincipal(
             provider,
-            conditions={"StringEquals": string_equals},
+            conditions={
+                "StringEquals": string_equals,
+                # IAM requires the trust policy to scope `sub` (or
+                # job_workflow_ref); the numeric-ID StringEquals above is not
+                # enough on its own.
+                "StringLike": {f"{_OIDC}:sub": sub_like},
+            },
         )
 
         role = iam.Role(
