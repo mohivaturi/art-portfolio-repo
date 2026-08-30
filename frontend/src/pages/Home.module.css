@@ -18,13 +18,13 @@
 
 .art {
   position: absolute;
-  right: -12%;
+  right: -9%;
   top: 50%;
   transform: translateY(-50%);
   height: 118%;
   width: auto;
   max-width: none;
-  filter: saturate(0.9);
+  filter: saturate(0.88) brightness(0.95);
 }
 
 /* dark overlay: flat tint + a left-to-right fade so the name and CTA
@@ -36,12 +36,13 @@
     linear-gradient(
       to right,
       var(--bg) 0%,
-      rgba(11, 10, 9, 0.88) 20%,
-      rgba(11, 10, 9, 0.56) 42%,
-      rgba(11, 10, 9, 0.34) 66%,
-      rgba(11, 10, 9, 0.3) 100%
+      var(--bg) 14%,
+      rgba(11, 10, 9, 0.92) 34%,
+      rgba(11, 10, 9, 0.66) 52%,
+      rgba(11, 10, 9, 0.4) 74%,
+      rgba(11, 10, 9, 0.36) 100%
     ),
-    rgba(11, 10, 9, 0.3);
+    rgba(11, 10, 9, 0.32);
 }
 
 /* --- left: signature + name --- */

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import art from '../assets/ganpathi-face.png'
+import art from '../assets/mahadev-face.png'
 import styles from './Home.module.css'
 
 export default function Home() {
