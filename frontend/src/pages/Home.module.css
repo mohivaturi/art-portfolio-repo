@@ -20,7 +20,7 @@
 
 .art {
   position: absolute;
-  right: -7%;
+  right: -9%;
   top: 48.5%;
   transform: translateY(-50%);
   height: 86%;
@@ -53,11 +53,11 @@
     linear-gradient(
       to right,
       var(--bg) 0%,
-      var(--bg) 46%,
-      rgba(11, 10, 9, 0.86) 57%,
-      rgba(11, 10, 9, 0.5) 70%,
-      rgba(11, 10, 9, 0.24) 86%,
-      rgba(11, 10, 9, 0.2) 100%
+      var(--bg) 50%,
+      rgba(11, 10, 9, 0.9) 61%,
+      rgba(11, 10, 9, 0.62) 73%,
+      rgba(11, 10, 9, 0.32) 88%,
+      rgba(11, 10, 9, 0.24) 100%
     ),
     rgba(11, 10, 9, 0.18);
 }
