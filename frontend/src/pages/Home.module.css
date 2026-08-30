@@ -11,38 +11,43 @@
 /* --- right: cropped artwork (face + right hand) in its frame --- */
 .plate {
   position: absolute;
-  inset: 0 0 0 auto;
-  width: min(86%, 1200px);
+  inset: 0;
+  width: auto;
+  overflow: hidden;
   pointer-events: none;
 }
 
 .art {
   position: absolute;
-  right: -9%;
+  right: -4%;
   top: 50%;
   transform: translateY(-50%);
-  height: 118%;
+  height: 98%;
   width: auto;
   max-width: none;
-  filter: saturate(0.88) brightness(0.95);
+  filter: saturate(0.9) brightness(0.96);
 }
 
-/* dark overlay: flat tint + a left-to-right fade so the name and CTA
-   stay readable where they sit over the art */
+/* no box: an edge vignette fades every side of the art into the page,
+   with the left side held darker so the name and CTA stay clean */
 .tint {
   position: absolute;
   inset: 0;
   background:
+    radial-gradient(
+      ellipse 66% 80% at 74% 47%,
+      rgba(11, 10, 9, 0) 34%,
+      rgba(11, 10, 9, 0.5) 74%,
+      var(--bg) 100%
+    ),
     linear-gradient(
       to right,
       var(--bg) 0%,
-      var(--bg) 14%,
-      rgba(11, 10, 9, 0.92) 34%,
-      rgba(11, 10, 9, 0.66) 52%,
-      rgba(11, 10, 9, 0.4) 74%,
-      rgba(11, 10, 9, 0.36) 100%
+      var(--bg) 32%,
+      rgba(11, 10, 9, 0.34) 54%,
+      rgba(11, 10, 9, 0.24) 100%
     ),
-    rgba(11, 10, 9, 0.32);
+    rgba(11, 10, 9, 0.18);
 }
 
 /* --- left: signature + name --- */
@@ -150,10 +155,11 @@
   }
   .art {
     position: absolute;
-    right: 50%;
+    left: 50%;
     top: 0;
-    transform: translateX(24%);
-    height: 122%;
+    transform: translateX(-50%);
+    height: 108%;
+    width: auto;
     margin: 0;
   }
   .tint {
