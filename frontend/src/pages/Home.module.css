@@ -9,7 +9,7 @@
   background-color: var(--bg);
 }
 
-/* --- full-bleed background, one layer per mode, crossfaded --- */
+/* --- full-bleed background, one layer per mode --- */
 .bg {
   position: absolute;
   inset: 0;
@@ -17,25 +17,25 @@
   height: 100%;
   object-fit: cover;
   object-position: 6% center; /* crop off the right so the far-right hand is out of frame */
-  z-index: 0;
-  transition: opacity 0.7s ease;
 }
 
+/* Sacred video sits underneath at full opacity always; the Stylised layer
+   fades in/out on top of it. No muddy 50/50 blend of two images -> smooth. */
 .bgSacred {
-  opacity: 1;
+  z-index: 0;
 }
 
 /* TODO: placeholder until the western / anime hero video is supplied */
 .bgStylised {
+  z-index: 1;
   opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
   background:
-    radial-gradient(ellipse 90% 80% at 68% 38%, #1b2a30 0%, rgba(11, 10, 9, 0) 68%),
-    linear-gradient(180deg, #12181b 0%, var(--bg) 70%);
+    radial-gradient(ellipse 70% 60% at 66% 34%, #24424c 0%, rgba(11, 10, 9, 0) 70%),
+    radial-gradient(ellipse 120% 90% at 20% 100%, #16232b 0%, rgba(11, 10, 9, 0) 60%),
+    linear-gradient(150deg, #101a1f 0%, #0b0a09 65%);
 }
 
-.hero[data-mode='stylised'] .bgSacred {
-  opacity: 0;
-}
 .hero[data-mode='stylised'] .bgStylised {
   opacity: 1;
 }
@@ -45,7 +45,7 @@
 .scrim {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   background:
     linear-gradient(
       to right,
@@ -64,7 +64,7 @@
 /* --- glass card --- */
 .card {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -89,22 +89,40 @@
 }
 
 /* --- mode toggle --- */
-.toggle {
-  position: relative;
+.switcher {
   align-self: stretch;
   display: flex;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  overflow: hidden;
+  flex-direction: column;
+  gap: 0.55rem;
 }
 
+.switchLabel {
+  margin: 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.toggle {
+  position: relative;
+  display: flex;
+  padding: 3px;
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* the sliding knob */
 .toggleThumb {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 50%;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
   background: var(--accent);
-  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  transition: transform 0.36s cubic-bezier(0.34, 1.4, 0.5, 1);
 }
 
 .hero[data-mode='stylised'] .toggleThumb {
@@ -115,17 +133,21 @@
   position: relative;
   z-index: 1;
   flex: 1;
-  padding: 0.62rem 0.5rem;
+  padding: 0.7rem 0.5rem;
   border: 0;
   background: none;
   cursor: pointer;
   font-family: var(--font-ui);
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-dim);
-  transition: color 0.25s ease;
+  transition: color 0.28s ease;
+}
+
+.toggleOption:hover {
+  color: var(--ink);
 }
 
 .toggleOption[aria-pressed='true'] {
@@ -134,7 +156,7 @@
 
 .toggleOption:focus-visible {
   outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 .signature {

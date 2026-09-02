@@ -53,28 +53,36 @@ export default function Home() {
       <span className={styles.scrim} aria-hidden="true" />
 
       <div className={styles.card}>
-        <div className={styles.toggle} role="group" aria-label="Choose a collection">
-          <span className={styles.toggleThumb} aria-hidden="true" />
-          <button
-            type="button"
-            className={styles.toggleOption}
-            aria-pressed={!stylised}
-            onClick={() => select('sacred')}
-          >
-            Sacred
-          </button>
-          <button
-            type="button"
-            className={styles.toggleOption}
-            aria-pressed={stylised}
-            onClick={() => select('stylised')}
-          >
-            Stylised
-          </button>
-        </div>
-
         <img className={styles.signature} src={signature} alt="" />
         <h1 className={styles.name}>Mohith Ivaturi</h1>
+
+        <div className={styles.switcher}>
+          <p className={styles.switchLabel}>Flip to switch collections</p>
+          <div
+            className={styles.toggle}
+            role="group"
+            aria-label="Choose a collection"
+          >
+            <span className={styles.toggleThumb} aria-hidden="true" />
+            <button
+              type="button"
+              className={styles.toggleOption}
+              aria-pressed={!stylised}
+              onClick={() => select('sacred')}
+            >
+              Sacred
+            </button>
+            <button
+              type="button"
+              className={styles.toggleOption}
+              aria-pressed={stylised}
+              onClick={() => select('stylised')}
+            >
+              Stylised
+            </button>
+          </div>
+        </div>
+
         <Link
           to={stylised ? '/collections/stylised' : '/collections'}
           className={styles.enter}
