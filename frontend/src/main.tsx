@@ -14,7 +14,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Home /> },
-      { path: 'collections', element: <Collections /> },
+      { path: 'collections', element: <Collections variant="sacred" /> },
+      { path: 'collections/stylised', element: <Collections variant="stylised" /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
     ],
