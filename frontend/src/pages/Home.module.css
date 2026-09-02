@@ -16,7 +16,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 22% center; /* shows the left of the frame -> face sits right */
+  object-position: 6% center; /* crop off the right so the far-right hand is out of frame */
   z-index: 0;
 }
 
