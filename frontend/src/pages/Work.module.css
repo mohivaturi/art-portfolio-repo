@@ -1,0 +1,108 @@
+.page {
+  flex: 1;
+  min-height: 100%;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 6vw, 3rem) 6rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  transition: color 0.25s ease;
+}
+.back:hover {
+  color: var(--ink);
+}
+
+.head {
+  margin-bottom: 3rem;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.meta {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim);
+}
+
+.stages {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 6vw, 4rem);
+}
+
+.stage {
+  margin: 0;
+}
+
+.stageLabel {
+  display: block;
+  margin-bottom: 0.85rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.stageImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+
+.description {
+  margin: clamp(3rem, 7vw, 4.5rem) 0 0;
+  max-width: 54ch;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: clamp(3.5rem, 8vw, 5rem);
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.pagerLink {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-dim);
+  transition: color 0.25s ease;
+}
+.pagerLink:hover {
+  color: var(--ink);
+}
+.pagerNext {
+  text-align: right;
+}
+
+.missing {
+  flex: 1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding: 6rem clamp(2rem, 6vw, 6rem);
+  color: var(--ink-dim);
+}

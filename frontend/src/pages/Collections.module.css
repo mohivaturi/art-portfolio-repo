@@ -1,0 +1,104 @@
+.page {
+  flex: 1;
+  min-height: 100%;
+  padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 6vw, 5rem) 6rem;
+}
+
+.head {
+  max-width: 1400px;
+  margin: 0 auto 3rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.crossLink {
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  transition: color 0.25s ease;
+}
+.crossLink:hover {
+  color: var(--ink);
+}
+
+.empty {
+  max-width: 1400px;
+  margin: 0 auto;
+  color: var(--ink-dim);
+}
+
+/* --- masonry via CSS columns --- */
+.grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  column-count: 3;
+  column-gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    column-count: 2;
+  }
+}
+@media (max-width: 560px) {
+  .grid {
+    column-count: 1;
+  }
+}
+
+.tile {
+  display: block;
+  break-inside: avoid;
+  margin-bottom: clamp(1rem, 2.5vw, 2rem);
+  color: inherit;
+}
+
+.tileImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  transition:
+    filter 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.tile:hover .tileImg {
+  filter: brightness(1.08);
+  border-color: rgba(217, 154, 58, 0.55);
+}
+
+.tileMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-top: 0.7rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+.tileTitle {
+  color: var(--ink);
+}
+
+.tileYear {
+  color: var(--ink-dim);
+  font-variant-numeric: tabular-nums;
+}

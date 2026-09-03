@@ -1,25 +1,48 @@
 import { Link } from 'react-router-dom'
-import styles from './Page.module.css'
+import { byStyle } from '../data/artworks'
+import styles from './Collections.module.css'
 
 type Props = { variant?: 'sacred' | 'stylised' }
 
 export default function Collections({ variant = 'sacred' }: Props) {
   const stylised = variant === 'stylised'
+  const items = byStyle(variant)
+
   return (
     <section className={styles.page}>
-      <p className={styles.eyebrow}>{stylised ? 'Stylised' : 'Sacred'}</p>
-      <h1 className={styles.title}>
-        {stylised ? 'Western & anime work' : 'Hindu & devotional work'}
-      </h1>
-      <p className={styles.note}>
-        The {stylised ? 'stylised' : 'devotional'} catalogue lands here next.
-      </p>
-      <Link
-        className={styles.back}
-        to={stylised ? '/collections' : '/collections/stylised'}
-      >
-        {stylised ? 'See the sacred work' : 'See the stylised work'}
-      </Link>
+      <header className={styles.head}>
+        <p className={styles.eyebrow}>{stylised ? 'Stylised' : 'Sacred'}</p>
+        <h1 className={styles.title}>
+          {stylised ? 'Western & anime work' : 'Hindu & devotional work'}
+        </h1>
+        <Link
+          className={styles.crossLink}
+          to={stylised ? '/collections' : '/collections/stylised'}
+        >
+          {stylised ? 'See the sacred work' : 'See the stylised work'}
+        </Link>
+      </header>
+
+      {items.length === 0 ? (
+        <p className={styles.empty}>This catalogue is being put together.</p>
+      ) : (
+        <div className={styles.grid}>
+          {items.map((art) => (
+            <Link key={art.slug} to={`/work/${art.slug}`} className={styles.tile}>
+              <img
+                className={styles.tileImg}
+                src={art.cover}
+                alt={art.title}
+                loading="lazy"
+              />
+              <span className={styles.tileMeta}>
+                <span className={styles.tileTitle}>{art.title}</span>
+                <span className={styles.tileYear}>{art.year}</span>
+              </span>
+            </Link>
+          ))}
+        </div>
+      )}
     </section>
   )
 }
