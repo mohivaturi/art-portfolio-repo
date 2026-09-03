@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import bgVideo from '../assets/mahadev-bg.mp4'
 import bgPoster from '../assets/mahadev-bg-poster.jpg'
@@ -11,23 +11,29 @@ export default function Home() {
   const [params, setParams] = useSearchParams()
   const stylised = params.get('style') === 'stylised'
   const mode = stylised ? 'stylised' : 'sacred'
+  const restored = useRef(false)
 
-  // remember the chosen world; restore it when the visitor returns to a bare "/"
   useEffect(() => {
-    if (params.has('style')) {
-      try {
-        localStorage.setItem(STORE_KEY, mode)
-      } catch {
-        /* private mode / storage blocked */
+    // First render only: if the URL made no explicit choice, restore the
+    // visitor's last one. After this, select() fully owns the state so a
+    // click back to Sacred is never overridden.
+    if (!restored.current) {
+      restored.current = true
+      if (!params.has('style')) {
+        try {
+          if (localStorage.getItem(STORE_KEY) === 'stylised') {
+            setParams({ style: 'stylised' }, { replace: true })
+          }
+        } catch {
+          /* storage blocked */
+        }
+        return
       }
-      return
     }
     try {
-      if (localStorage.getItem(STORE_KEY) === 'stylised') {
-        setParams({ style: 'stylised' }, { replace: true })
-      }
+      localStorage.setItem(STORE_KEY, mode)
     } catch {
-      /* ignore */
+      /* storage blocked */
     }
   }, [params, mode, setParams])
 
