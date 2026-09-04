@@ -76,6 +76,28 @@ export const artworks: Artwork[] = [
     description:
       'The standing form of Vishnu under a golden torana, chakra and shankha in the upper hands, Garuda and Hanuman on the pillar bases.',
   },
+  {
+    slug: 'mahadev',
+    title: 'Mahadev',
+    year: '2024',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('mahadev.jpg'),
+    stages: [{ label: 'Final', src: asset('mahadev.jpg') }],
+    description:
+      'Shiva in meditation on a cosmic ground, trishul and serpent to one side, a flame held in the open hand. The still frame the home-page video is built from.',
+  },
+  {
+    slug: 'dhyana-anjaneyam',
+    title: 'Dhyana Anjaneyam',
+    year: '2023',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('dhyana-anjaneyam.jpg'),
+    stages: [{ label: 'Final', src: asset('dhyana-anjaneyam.jpg') }],
+    description:
+      'Hanuman in dhyana, ringed by the Rama-nama japa written out as a halo, "Shri Ram" on the pendant.',
+  },
   // --- placeholders (varied sizes) ---
   {
     slug: 'nataraja',
