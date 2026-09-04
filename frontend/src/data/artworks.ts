@@ -1,12 +1,13 @@
 /**
  * Artwork catalogue.
  *
- * Placeholder images use picsum.photos with a per-stage treatment so the
- * sketch -> outline -> final progression reads even before real art is in:
- *   sketch  = grayscale + blur
- *   outline = grayscale
- *   final   = full colour
- * Replace `stages[].src` and `cover` with real files under src/assets/work/.
+ * Real images live in src/assets/work/ and are picked up by the glob below;
+ * reference them by filename. Pieces that only have a final so far get a
+ * single "Final" stage; add sketch/outline entries as they exist.
+ *
+ * Placeholder pieces use picsum.photos with a per-stage treatment so the
+ * sketch -> outline -> final progression reads, and with varied sizes so the
+ * masonry isn't a uniform grid.
  */
 
 export type Style = 'sacred' | 'stylised'
@@ -27,37 +28,126 @@ export type Artwork = {
   description: string
 }
 
-const W = 1100
-const H = 1375
+// real files: src/assets/work/<name>
+const files = import.meta.glob('../assets/work/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>
 
-function stages(seed: string): Stage[] {
-  const base = `https://picsum.photos/seed/${seed}/${W}/${H}`
-  return [
-    { label: 'Sketch', src: `${base}?grayscale&blur=2` },
-    { label: 'Outline', src: `${base}?grayscale` },
-    { label: 'Final', src: base },
-  ]
+const asset = (name: string): string => {
+  const hit = Object.entries(files).find(([path]) => path.endsWith(`/${name}`))
+  if (!hit) throw new Error(`missing artwork asset: ${name}`)
+  return hit[1]
 }
 
-// TODO: real titles, years, media, descriptions and images
-const raw: Omit<Artwork, 'cover' | 'stages'>[] = [
-  { slug: 'nataraja', title: 'Nataraja', year: '2024', medium: 'Digital', style: 'sacred', description: 'The cosmic dance in the ring of fire. A study of motion held still.' },
-  { slug: 'ardhanarishvara', title: 'Ardhanarishvara', year: '2024', medium: 'Digital', style: 'sacred', description: 'Half Shiva, half Parvati. The composition splits cleanly down the centre line.' },
-  { slug: 'ganesha-dhyana', title: 'Ganesha in Dhyana', year: '2023', medium: 'Digital', style: 'sacred', description: 'The remover of obstacles, seated and still. Warm tones against a dark ground.' },
-  { slug: 'durga', title: 'Durga', year: '2024', medium: 'Digital', style: 'sacred', description: 'Ten arms, one focus. Built the weapons first, then the calm face last.' },
-  { slug: 'kali', title: 'Kali', year: '2023', medium: 'Digital', style: 'sacred', description: 'Time and destruction. High contrast, minimal palette, a lot of black.' },
-  { slug: 'saraswati', title: 'Saraswati', year: '2024', medium: 'Digital', style: 'sacred', description: 'Knowledge and sound. The veena drives the whole composition.' },
-  { slug: 'hanuman', title: 'Hanuman', year: '2023', medium: 'Digital', style: 'sacred', description: 'Devotion and strength. A wide format to carry the leap.' },
-  { slug: 'shiva-dhyana', title: 'Shiva Dhyana', year: '2024', medium: 'Digital', style: 'sacred', description: 'The meditating ascetic on Kailasa. Cool blues, a crescent, a serpent.' },
-  { slug: 'krishna-venugopala', title: 'Krishna Venugopala', year: '2023', medium: 'Digital', style: 'sacred', description: 'The flute player. Softer line work, a lot of curve.' },
-  { slug: 'trimurti', title: 'Trimurti', year: '2024', medium: 'Digital', style: 'sacred', description: 'Brahma, Vishnu, Shiva as one form. A symmetry exercise.' },
-]
+// picsum placeholder with the sketch -> outline -> final treatment
+const ph = (seed: string, w: number, h: number): Omit<Artwork, 'slug' | 'title' | 'year' | 'medium' | 'style' | 'description'> => {
+  const base = `https://picsum.photos/seed/${seed}/${w}/${h}`
+  return {
+    cover: base,
+    stages: [
+      { label: 'Sketch', src: `${base}?grayscale&blur=2` },
+      { label: 'Outline', src: `${base}?grayscale` },
+      { label: 'Final', src: base },
+    ],
+  }
+}
 
-export const artworks: Artwork[] = raw.map((a) => ({
-  ...a,
-  cover: `https://picsum.photos/seed/${a.slug}/${W}/${H}`,
-  stages: stages(a.slug),
-}))
+export const artworks: Artwork[] = [
+  {
+    slug: 'ganpathi-maharaj',
+    title: 'Ganpathi Maharaj',
+    year: '2025',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('ganpathi-maharaj.jpg'),
+    stages: [{ label: 'Final', src: asset('ganpathi-maharaj.jpg') }],
+    description:
+      'Ganpathi Maharaj enthroned, the mouse at his feet. Built the throne and the ornament first, then the deity over it.',
+  },
+  // --- placeholders (varied sizes) ---
+  {
+    slug: 'nataraja',
+    title: 'Nataraja',
+    year: '2024',
+    medium: 'Digital',
+    style: 'sacred',
+    ...ph('nataraja', 1100, 1550),
+    description: 'The cosmic dance in the ring of fire. A study of motion held still.',
+  },
+  {
+    slug: 'ardhanarishvara',
+    title: 'Ardhanarishvara',
+    year: '2024',
+    medium: 'Digital',
+    style: 'sacred',
+    ...ph('ardhanarishvara', 1100, 1300),
+    description: 'Half Shiva, half Parvati. The composition splits down the centre line.',
+  },
+  {
+    slug: 'ganesha-dhyana',
+    title: 'Ganesha in Dhyana',
+    year: '2023',
+    medium: 'Digital',
+    style: 'sacred',
+    ...ph('ganesha-dhyana', 1200, 1200),
+    description: 'The remover of obstacles, seated and still. Warm tones on a dark ground.',
+  },
+  {
+    slug: 'durga',
+    title: 'Durga',
+    year: '2024',
+    medium: 'Digital',
+    style: 'sacred',
+    ...ph('durga', 1000, 1500),
+    description: 'Ten arms, one focus. Built the weapons first, the calm face last.',
+  },
+  {
+    slug: 'kali',
+    title: 'Kali',
+    year: '2023',
+    medium: 'Digital',
+    style: 'sacred',
+    ...ph('kali', 1400, 1000),
+    description: 'Time and destruction. High contrast, minimal palette, a lot of black.',
+  },
+  {
+    slug: 'saraswati',
+    title: 'Saraswati',
+    year: '2024',
+    medium: 'Digital',
+    style: 'sacred',
+    ...ph('saraswati', 1100, 1400),
+    description: 'Knowledge and sound. The veena drives the whole composition.',
+  },
+  {
+    slug: 'hanuman',
+    title: 'Hanuman',
+    year: '2023',
+    medium: 'Digital',
+    style: 'sacred',
+    ...ph('hanuman', 1500, 950),
+    description: 'Devotion and strength. A wide format to carry the leap.',
+  },
+  {
+    slug: 'krishna-venugopala',
+    title: 'Krishna Venugopala',
+    year: '2023',
+    medium: 'Digital',
+    style: 'sacred',
+    ...ph('krishna-venugopala', 1000, 1250),
+    description: 'The flute player. Softer line work, a lot of curve.',
+  },
+  {
+    slug: 'trimurti',
+    title: 'Trimurti',
+    year: '2024',
+    medium: 'Digital',
+    style: 'sacred',
+    ...ph('trimurti', 1300, 1000),
+    description: 'Brahma, Vishnu, Shiva as one form. A symmetry exercise.',
+  },
+]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
 

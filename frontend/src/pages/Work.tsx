@@ -40,9 +40,11 @@ export default function Work() {
       <div className={styles.stages}>
         {art.stages.map((stage, n) => (
           <figure key={stage.label} className={styles.stage}>
-            <span className={styles.stageLabel}>
-              {String(n + 1).padStart(2, '0')} &middot; {stage.label}
-            </span>
+            {art.stages.length > 1 && (
+              <span className={styles.stageLabel}>
+                {String(n + 1).padStart(2, '0')} &middot; {stage.label}
+              </span>
+            )}
             <img
               className={styles.stageImg}
               src={stage.src}
