@@ -81,7 +81,8 @@
 
 .tile:hover .tileImg {
   filter: brightness(1.08);
-  border-color: rgba(217, 154, 58, 0.55);
+  border-color: var(--accent);
+  box-shadow: 0 0 22px var(--accent-glow);
 }
 
 .tileMeta {

@@ -11,8 +11,9 @@
   --ink: #ece7df;         /* off-white body */
   --ink-dim: #8f8880;     /* muted labels */
   --line: #2a2723;        /* hairlines */
-  --accent: #d99a3a;      /* muted saffron - the ONLY accent */
-  --accent-ink: #0b0a09;  /* text on accent fill */
+  --accent: #39dced;      /* glowing cyan, matched to the Mahadev aura */
+  --accent-ink: #04191c;  /* text on the cyan fill */
+  --accent-glow: rgba(57, 220, 237, 0.4);
 
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-ui: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;

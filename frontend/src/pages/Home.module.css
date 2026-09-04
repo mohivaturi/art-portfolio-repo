@@ -122,7 +122,9 @@
   left: 3px;
   width: calc(50% - 3px);
   background: var(--accent);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.45),
+    0 0 14px var(--accent-glow);
   transition: transform 0.36s cubic-bezier(0.34, 1.4, 0.5, 1);
 }
 
@@ -189,12 +191,14 @@
   white-space: nowrap;
   transition:
     background-color 0.25s ease,
-    color 0.25s ease;
+    color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .enter:hover {
   background-color: var(--accent);
   color: var(--accent-ink);
+  box-shadow: 0 0 24px var(--accent-glow);
 }
 
 @media (prefers-reduced-motion: no-preference) {
