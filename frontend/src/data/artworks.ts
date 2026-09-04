@@ -65,6 +65,17 @@ export const artworks: Artwork[] = [
     description:
       'Ganpathi Maharaj enthroned, the mouse at his feet. Built the throne and the ornament first, then the deity over it.',
   },
+  {
+    slug: 'venkataramana-murthy',
+    title: 'Venkataramana Murthy',
+    year: '2026',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('venkataramana-murthy.jpg'),
+    stages: [{ label: 'Final', src: asset('venkataramana-murthy.jpg') }],
+    description:
+      'The standing form of Vishnu under a golden torana, chakra and shankha in the upper hands, Garuda and Hanuman on the pillar bases.',
+  },
   // --- placeholders (varied sizes) ---
   {
     slug: 'nataraja',
