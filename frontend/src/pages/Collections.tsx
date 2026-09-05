@@ -11,10 +11,7 @@ export default function Collections({ variant = 'sacred' }: Props) {
   return (
     <section className={styles.page}>
       <header className={styles.head}>
-        <p className={styles.eyebrow}>{stylised ? 'Stylised' : 'Sacred'}</p>
-        <h1 className={styles.title}>
-          {stylised ? 'Western & anime work' : 'Hindu & devotional work'}
-        </h1>
+        <h1 className={styles.eyebrow}>{stylised ? 'Stylised' : 'Sacred'}</h1>
         <Link
           className={styles.crossLink}
           to={stylised ? '/collections' : '/collections/stylised'}
