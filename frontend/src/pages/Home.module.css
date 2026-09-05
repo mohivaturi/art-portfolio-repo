@@ -36,25 +36,17 @@
   opacity: 1;
 }
 
-/* light touch only, so the video stays visible: darker on the left where
-   the card sits, a gentle floor gradient for depth */
+/* barely-there wash behind the card only; the video stays vivid */
 .scrim {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background:
-    linear-gradient(
-      to right,
-      rgba(11, 10, 9, 0.62) 0%,
-      rgba(11, 10, 9, 0.28) 42%,
-      rgba(11, 10, 9, 0) 68%
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(11, 10, 9, 0.12) 0%,
-      rgba(11, 10, 9, 0) 45%,
-      rgba(11, 10, 9, 0.34) 100%
-    );
+  background: linear-gradient(
+    to right,
+    rgba(11, 10, 9, 0.32) 0%,
+    rgba(11, 10, 9, 0.12) 30%,
+    rgba(11, 10, 9, 0) 52%
+  );
 }
 
 /* --- glass card --- */
@@ -68,9 +60,9 @@
   gap: 1.05rem;
   width: min(24rem, 100%);
   padding: 1.9rem 1.9rem 2.1rem;
-  background: rgba(12, 11, 9, 0.22);
-  backdrop-filter: blur(12px) saturate(115%);
-  -webkit-backdrop-filter: blur(12px) saturate(115%);
+  background: rgba(12, 11, 9, 0.32);
+  backdrop-filter: blur(14px) saturate(115%);
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 20px;
   box-shadow:
