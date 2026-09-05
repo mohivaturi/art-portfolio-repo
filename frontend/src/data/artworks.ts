@@ -22,6 +22,7 @@ export type Stage = {
 export type Artwork = {
   slug: string
   title: string
+  subtitle?: string
   year: string
   medium: string
   style: Style
@@ -60,6 +61,7 @@ export const artworks: Artwork[] = [
   {
     slug: 'lalbaugcha-raja',
     title: 'Lalbaugcha Raja',
+    subtitle: 'Remover of Obstacles',
     year: '2025',
     medium: 'Digital',
     style: 'sacred',
@@ -71,7 +73,7 @@ export const artworks: Artwork[] = [
       { label: 'Rough sketch', src: asset('lalbaugcha-raja/sketch.jpg') },
     ],
     description:
-      'The Lalbaug Ganpati, enthroned with the lions and the mouse. Blocked the pose in red, tightened to clean line, then dressed and coloured.',
+      "Inspired by Mumbai's Lalbaugcha Raja, the Ganesh Chaturthi idol lakhs queue for hours to see. Painted for that festival charge: marigold and mango-leaf toran, dhol-tasha, and the ten days before he is carried to the sea.",
   },
   {
     slug: 'venkataramana-murthy',

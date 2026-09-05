@@ -31,7 +31,15 @@ export default function Work() {
       </Link>
 
       <header className={styles.head}>
-        <h1 className={styles.title}>{art.title}</h1>
+        <h1 className={styles.title}>
+          {art.title}
+          {art.subtitle && (
+            <>
+              <br />
+              <span className={styles.subtitle}>{art.subtitle}</span>
+            </>
+          )}
+        </h1>
         <p className={styles.meta}>
           {art.year} &middot; {art.medium}
         </p>

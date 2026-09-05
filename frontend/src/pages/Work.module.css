@@ -30,8 +30,17 @@
   font-weight: 500;
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: 0.01em;
-  line-height: 1.1;
+  line-height: 1.12;
   color: var(--ink);
+}
+
+.subtitle {
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-weight: 400;
+  font-size: 0.5em;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim);
 }
 
 .meta {
