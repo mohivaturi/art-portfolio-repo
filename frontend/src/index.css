@@ -2,7 +2,6 @@
 @import "@fontsource/cormorant-garamond/400.css";
 @import "@fontsource/cormorant-garamond/400-italic.css";
 @import "@fontsource/cormorant-garamond/500.css";
-@import "@fontsource/mr-dafoe/latin-400.css";
 @import "@fontsource-variable/space-grotesk";
 
 :root {
@@ -20,7 +19,6 @@
 
   --font-display: "Cormorant Garamond", Georgia, serif;
   --font-ui: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
-  --font-script: "Mr Dafoe", "Brush Script MT", cursive;
 
   color-scheme: dark;
   background: var(--bg);
