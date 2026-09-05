@@ -89,13 +89,18 @@ export const artworks: Artwork[] = [
   {
     slug: 'mahadev',
     title: 'Mahadev',
-    year: '2024',
+    subtitle: 'He is all and everything. He is the Universe.',
+    year: '2022',
     medium: 'Digital',
     style: 'sacred',
     cover: asset('mahadev/final.jpg'),
-    stages: [{ label: 'Final', src: asset('mahadev/final.jpg') }],
+    stages: [
+      { label: 'Final', src: asset('mahadev/final.jpg') },
+      { label: 'Line art', src: asset('mahadev/line-art.jpg') },
+      { label: 'Rough sketch', src: asset('mahadev/sketch.jpg') },
+    ],
     description:
-      'Shiva in meditation on a cosmic ground, trishul and serpent to one side, a flame held in the open hand. The still frame the home-page video is built from.',
+      'My first ever painting in Photoshop. It took a few days, learning off every random YouTube tutorial and just going all out. Still my favourite piece I have made.',
   },
   {
     slug: 'dhyana-anjaneyam',
