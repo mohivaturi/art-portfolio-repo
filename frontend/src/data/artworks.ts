@@ -67,8 +67,8 @@ export const artworks: Artwork[] = [
     // shown top-to-bottom: final first, then back through the process
     stages: [
       { label: 'Final', src: asset('lalbaugcha-raja/final.jpg') },
-      { label: 'Line art', src: asset('lalbaugcha-raja/line-art.jpg'), invert: true },
-      { label: 'Rough sketch', src: asset('lalbaugcha-raja/sketch.jpg'), invert: true },
+      { label: 'Line art', src: asset('lalbaugcha-raja/line-art.jpg') },
+      { label: 'Rough sketch', src: asset('lalbaugcha-raja/sketch.jpg') },
     ],
     description:
       'The Lalbaug Ganpati, enthroned with the lions and the mouse. Blocked the pose in red, tightened to clean line, then dressed and coloured.',
