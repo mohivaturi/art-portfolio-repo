@@ -73,7 +73,7 @@ export const artworks: Artwork[] = [
       { label: 'Rough sketch', src: asset('lalbaugcha-raja/sketch.jpg') },
     ],
     description:
-      "Inspired by Mumbai's Lalbaugcha Raja, the Ganesh Chaturthi idol lakhs queue for hours to see. Painted for that festival charge: marigold and mango-leaf toran, dhol-tasha, and the ten days before he is carried to the sea.",
+      "The inspiration comes from Mumbai's Lalbaugcha Raja. I created this piece during last year's Ganesh Chaturthi. Visiting his mandap during the festival is still on my checklist.",
   },
   {
     slug: 'venkataramana-murthy',

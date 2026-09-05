@@ -31,7 +31,10 @@
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: 0.01em;
   line-height: 1.12;
-  color: var(--ink);
+  color: var(--accent);
+  text-shadow:
+    0 0 10px var(--accent-glow),
+    0 0 26px var(--accent-glow);
 }
 
 .subtitle {
@@ -41,6 +44,7 @@
   font-size: 0.5em;
   letter-spacing: 0.06em;
   color: var(--ink-dim);
+  text-shadow: none;
 }
 
 .meta {
