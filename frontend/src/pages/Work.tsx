@@ -1,6 +1,18 @@
+import type { ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { bySlug, byStyle } from '../data/artworks'
 import styles from './Work.module.css'
+
+// render *word* as emphasis so terms like *nijarupa* sit in italic
+function emphasise(text: string): ReactNode[] {
+  return text.split(/(\*[^*]+\*)/).map((part, i) =>
+    part.startsWith('*') && part.endsWith('*') ? (
+      <em key={i}>{part.slice(1, -1)}</em>
+    ) : (
+      part
+    ),
+  )
+}
 
 export default function Work() {
   const { slug = '' } = useParams()
@@ -44,7 +56,7 @@ export default function Work() {
           {art.year} &middot; {art.medium}
         </p>
         {art.quote && <p className={styles.quote}>{art.quote}</p>}
-        <p className={styles.description}>{art.description}</p>
+        <p className={styles.description}>{emphasise(art.description)}</p>
       </header>
 
       <div className={styles.stages}>

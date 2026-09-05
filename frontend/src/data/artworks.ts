@@ -80,13 +80,19 @@ export const artworks: Artwork[] = [
   {
     slug: 'venkataramana-murthy',
     title: 'Venkataramana Murthy',
+    subtitle: 'Cosmic in form, gentle in grace.',
     year: '2026',
     medium: 'Digital',
     style: 'sacred',
     cover: asset('venkataramana-murthy/final.jpg'),
-    stages: [{ label: 'Final', src: asset('venkataramana-murthy/final.jpg') }],
+    stages: [
+      { label: 'Final', src: asset('venkataramana-murthy/final.jpg') },
+      { label: 'Nijarupa', src: asset('venkataramana-murthy/nijarupa.jpg') },
+      { label: 'Line art', src: asset('venkataramana-murthy/line-art.jpg') },
+      { label: 'Rough sketch', src: asset('venkataramana-murthy/sketch.jpg') },
+    ],
     description:
-      'The standing form of Vishnu under a golden torana, chakra and shankha in the upper hands, Garuda and Hanuman on the pillar bases.',
+      'I felt his boundless aura on my last visit to his abode. Whether the *nijarupa* darshan or the full *alankara*, his presence is unmatched.',
   },
   {
     slug: 'mahadev',
