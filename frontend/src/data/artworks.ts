@@ -129,6 +129,18 @@ export const artworks: Artwork[] = [
     description:
       'Loosely: golden-hued and finely robed, studs in his ears and curls in his hair. That is how Shri Tulsidas describes him in the Hanuman Chalisa, and I tried to carry the same into this piece.',
   },
+  {
+    slug: 'gitopadesham',
+    title: 'Gitopadesham',
+    subtitle: 'Lessons for the ages.',
+    year: '2026',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('gitopadesham/final.jpg'),
+    stages: [{ label: 'Final', src: asset('gitopadesham/final.jpg') }],
+    description:
+      "A cowherd, a prankster, an enchanting flute player, a lover, a true warrior, a kingmaker, a mentor, and a colourful incarnation of the divine. It didn't turn out the way I had it in my mind — not that I'm unhappy with the outcome. PS: I lost the line art and rough sketches for this one, though.",
+  },
   // --- placeholders (varied sizes) ---
   {
     slug: 'nataraja',
