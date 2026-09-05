@@ -88,6 +88,7 @@ export const artworks: Artwork[] = [
     stages: [
       { label: 'Final', src: asset('venkataramana-murthy/final.jpg') },
       { label: 'Nijarupa', src: asset('venkataramana-murthy/nijarupa.jpg') },
+      { label: 'Nijarupa', src: asset('venkataramana-murthy/nijarupa-2.jpg') },
       { label: 'Line art', src: asset('venkataramana-murthy/line-art.jpg') },
       { label: 'Rough sketch', src: asset('venkataramana-murthy/sketch.jpg') },
     ],

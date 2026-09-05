@@ -61,7 +61,7 @@ export default function Work() {
 
       <div className={styles.stages}>
         {art.stages.map((stage, n) => (
-          <figure key={stage.label} className={styles.stage}>
+          <figure key={n} className={styles.stage}>
             {art.stages.length > 1 && (
               <span className={styles.stageLabel}>{stage.label}</span>
             )}
