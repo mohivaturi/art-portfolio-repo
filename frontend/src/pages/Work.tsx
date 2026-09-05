@@ -43,6 +43,7 @@ export default function Work() {
         <p className={styles.meta}>
           {art.year} &middot; {art.medium}
         </p>
+        {art.quote && <p className={styles.quote}>{art.quote}</p>}
         <p className={styles.description}>{art.description}</p>
       </header>
 

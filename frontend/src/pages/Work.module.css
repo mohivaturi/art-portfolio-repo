@@ -86,8 +86,18 @@
   border-color: transparent;
 }
 
+.quote {
+  margin: 1.1rem 0 0.5rem;
+  max-width: 52ch;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
 .description {
-  margin: 1.1rem 0 0;
+  margin: 0.5rem 0 0;
   max-width: 52ch;
   font-size: 0.95rem;
   line-height: 1.65;

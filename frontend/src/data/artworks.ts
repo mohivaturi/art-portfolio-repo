@@ -23,6 +23,8 @@ export type Artwork = {
   slug: string
   title: string
   subtitle?: string
+  /** an epigraph shown in italic above the description */
+  quote?: string
   year: string
   medium: string
   style: Style
@@ -104,14 +106,21 @@ export const artworks: Artwork[] = [
   },
   {
     slug: 'dhyana-anjaneyam',
-    title: 'Dhyana Anjaneyam',
-    year: '2023',
+    title: 'Dhyana Anjaneya',
+    subtitle: 'Serene and strong.',
+    quote:
+      'Kanchana barana biraja subesa, kanana kundala kunchita kesa.',
+    year: '2022',
     medium: 'Digital',
     style: 'sacred',
     cover: asset('dhyana-anjaneyam/final.jpg'),
-    stages: [{ label: 'Final', src: asset('dhyana-anjaneyam/final.jpg') }],
+    stages: [
+      { label: 'Final', src: asset('dhyana-anjaneyam/final.jpg') },
+      { label: 'Line art', src: asset('dhyana-anjaneyam/line-art.jpg') },
+      { label: 'Rough sketch', src: asset('dhyana-anjaneyam/sketch.jpg') },
+    ],
     description:
-      'Hanuman in dhyana, ringed by the Rama-nama japa written out as a halo, "Shri Ram" on the pendant.',
+      'Loosely: golden-hued and finely robed, rings in his ears and curls in his hair. That is how Shri Tulsidas describes him in the Hanuman Chalisa, and I tried to carry the same into this piece.',
   },
   // --- placeholders (varied sizes) ---
   {
