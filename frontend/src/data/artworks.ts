@@ -120,7 +120,7 @@ export const artworks: Artwork[] = [
       { label: 'Rough sketch', src: asset('dhyana-anjaneyam/sketch.jpg') },
     ],
     description:
-      'Loosely: golden-hued and finely robed, rings in his ears and curls in his hair. That is how Shri Tulsidas describes him in the Hanuman Chalisa, and I tried to carry the same into this piece.',
+      'Loosely: golden-hued and finely robed, studs in his ears and curls in his hair. That is how Shri Tulsidas describes him in the Hanuman Chalisa, and I tried to carry the same into this piece.',
   },
   // --- placeholders (varied sizes) ---
   {
