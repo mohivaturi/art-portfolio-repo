@@ -100,7 +100,7 @@ export const artworks: Artwork[] = [
       { label: 'Rough sketch', src: asset('mahadev/sketch.jpg') },
     ],
     description:
-      'My first ever painting in Photoshop. It took a few days, learning off every random YouTube tutorial and just going all out. Still my favourite piece I have made.',
+      'My first ever painting in Photoshop. It took several days, learning off every random YouTube tutorial and just going all out. Still my favourite piece I have made.',
   },
   {
     slug: 'dhyana-anjaneyam',
