@@ -93,7 +93,7 @@ export const artworks: Artwork[] = [
       { label: 'Rough sketch', src: asset('venkataramana-murthy/sketch.jpg') },
     ],
     description:
-      'I felt his boundless aura on my last visit to his abode. Whether the *nijarupa* darshan or the full *alankara*, his presence is unmatched.',
+      'I felt his infinite aura on my last visit to his abode. Whether the *nijarupa* darshan or the full *alankara*, his presence is unmatched.',
   },
   {
     slug: 'mahadev',
