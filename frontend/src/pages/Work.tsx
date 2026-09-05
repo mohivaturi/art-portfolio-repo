@@ -41,12 +41,14 @@ export default function Work() {
         {art.stages.map((stage, n) => (
           <figure key={stage.label} className={styles.stage}>
             {art.stages.length > 1 && (
-              <span className={styles.stageLabel}>
-                {String(n + 1).padStart(2, '0')} &middot; {stage.label}
-              </span>
+              <span className={styles.stageLabel}>{stage.label}</span>
             )}
             <img
-              className={styles.stageImg}
+              className={
+                stage.invert
+                  ? `${styles.stageImg} ${styles.stageImgInvert}`
+                  : styles.stageImg
+              }
               src={stage.src}
               alt={`${art.title} — ${stage.label}`}
               loading={n === 0 ? 'eager' : 'lazy'}

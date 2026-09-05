@@ -15,6 +15,8 @@ export type Style = 'sacred' | 'stylised'
 export type Stage = {
   label: string
   src: string
+  /** invert a white-paper drawing to light-on-dark to fit the theme */
+  invert?: boolean
 }
 
 export type Artwork = {
@@ -28,15 +30,16 @@ export type Artwork = {
   description: string
 }
 
-// real files: src/assets/work/<name>
-const files = import.meta.glob('../assets/work/*.{jpg,jpeg,png,webp}', {
+// real files: src/assets/work/<slug>/<stage>.jpg
+const files = import.meta.glob('../assets/work/**/*.{jpg,jpeg,png,webp}', {
   eager: true,
   import: 'default',
 }) as Record<string, string>
 
-const asset = (name: string): string => {
-  const hit = Object.entries(files).find(([path]) => path.endsWith(`/${name}`))
-  if (!hit) throw new Error(`missing artwork asset: ${name}`)
+// asset('lalbaugcha-raja/final.jpg')
+const asset = (path: string): string => {
+  const hit = Object.entries(files).find(([p]) => p.endsWith(`/${path}`))
+  if (!hit) throw new Error(`missing artwork asset: ${path}`)
   return hit[1]
 }
 
@@ -55,15 +58,20 @@ const ph = (seed: string, w: number, h: number): Omit<Artwork, 'slug' | 'title' 
 
 export const artworks: Artwork[] = [
   {
-    slug: 'ganpathi-maharaj',
-    title: 'Ganpathi Maharaj',
+    slug: 'lalbaugcha-raja',
+    title: 'Lalbaugcha Raja',
     year: '2025',
     medium: 'Digital',
     style: 'sacred',
-    cover: asset('ganpathi-maharaj.jpg'),
-    stages: [{ label: 'Final', src: asset('ganpathi-maharaj.jpg') }],
+    cover: asset('lalbaugcha-raja/final.jpg'),
+    // shown top-to-bottom: final first, then back through the process
+    stages: [
+      { label: 'Final', src: asset('lalbaugcha-raja/final.jpg') },
+      { label: 'Line art', src: asset('lalbaugcha-raja/line-art.jpg'), invert: true },
+      { label: 'Rough sketch', src: asset('lalbaugcha-raja/sketch.jpg'), invert: true },
+    ],
     description:
-      'Ganpathi Maharaj enthroned, the mouse at his feet. Built the throne and the ornament first, then the deity over it.',
+      'The Lalbaug Ganpati, enthroned with the lions and the mouse. Blocked the pose in red, tightened to clean line, then dressed and coloured.',
   },
   {
     slug: 'venkataramana-murthy',
@@ -71,8 +79,8 @@ export const artworks: Artwork[] = [
     year: '2026',
     medium: 'Digital',
     style: 'sacred',
-    cover: asset('venkataramana-murthy.jpg'),
-    stages: [{ label: 'Final', src: asset('venkataramana-murthy.jpg') }],
+    cover: asset('venkataramana-murthy/final.jpg'),
+    stages: [{ label: 'Final', src: asset('venkataramana-murthy/final.jpg') }],
     description:
       'The standing form of Vishnu under a golden torana, chakra and shankha in the upper hands, Garuda and Hanuman on the pillar bases.',
   },
@@ -82,8 +90,8 @@ export const artworks: Artwork[] = [
     year: '2024',
     medium: 'Digital',
     style: 'sacred',
-    cover: asset('mahadev.jpg'),
-    stages: [{ label: 'Final', src: asset('mahadev.jpg') }],
+    cover: asset('mahadev/final.jpg'),
+    stages: [{ label: 'Final', src: asset('mahadev/final.jpg') }],
     description:
       'Shiva in meditation on a cosmic ground, trishul and serpent to one side, a flame held in the open hand. The still frame the home-page video is built from.',
   },
@@ -93,8 +101,8 @@ export const artworks: Artwork[] = [
     year: '2023',
     medium: 'Digital',
     style: 'sacred',
-    cover: asset('dhyana-anjaneyam.jpg'),
-    stages: [{ label: 'Final', src: asset('dhyana-anjaneyam.jpg') }],
+    cover: asset('dhyana-anjaneyam/final.jpg'),
+    stages: [{ label: 'Final', src: asset('dhyana-anjaneyam/final.jpg') }],
     description:
       'Hanuman in dhyana, ringed by the Rama-nama japa written out as a halo, "Shri Ram" on the pendant.',
   },
