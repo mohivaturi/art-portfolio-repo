@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import bgVideo from '../assets/mahadev-bg.mp4'
 import bgPoster from '../assets/mahadev-bg-poster.jpg'
-import signature from '../assets/signature.png'
+import signatureSacred from '../assets/signature-sacred.png'
+import signatureStylised from '../assets/signature-stylised.png'
 import styles from './Home.module.css'
 
 const STORE_KEY = 'gallery-style'
@@ -59,7 +60,11 @@ export default function Home() {
       <span className={styles.scrim} aria-hidden="true" />
 
       <div className={styles.card}>
-        <img className={styles.signature} src={signature} alt="" />
+        <img
+          className={styles.signature}
+          src={stylised ? signatureStylised : signatureSacred}
+          alt=""
+        />
         <h1 className={styles.name}>Mohith Ivaturi</h1>
 
         <div className={styles.switcher}>

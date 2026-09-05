@@ -11,8 +11,10 @@
   --ink: #ece7df;         /* off-white body */
   --ink-dim: #8f8880;     /* muted labels */
   --line: #2a2723;        /* hairlines */
-  --accent: #39dced;      /* glowing cyan, matched to the Mahadev aura */
-  --accent-ink: #04191c;  /* text on the cyan fill */
+
+  /* per-world accent — see [data-style] below. Default = sacred (cyan). */
+  --accent: #39dced;
+  --accent-ink: #04191c;
   --accent-glow: rgba(57, 220, 237, 0.4);
 
   --font-display: "Cormorant Garamond", Georgia, serif;
@@ -27,6 +29,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* sacred = cyan (matches the Mahadev aura), stylised = pink (matches the
+   stylised neon signature). Set on the app shell from the current route. */
+[data-style='sacred'] {
+  --accent: #39dced;
+  --accent-ink: #04191c;
+  --accent-glow: rgba(57, 220, 237, 0.4);
+}
+[data-style='stylised'] {
+  --accent: #f24fda;
+  --accent-ink: #1c0419;
+  --accent-glow: rgba(242, 79, 218, 0.42);
 }
 
 *,

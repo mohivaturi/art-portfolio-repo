@@ -32,9 +32,9 @@
   opacity: 0;
   transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
   background:
-    radial-gradient(ellipse 70% 60% at 66% 34%, #24424c 0%, rgba(11, 10, 9, 0) 70%),
-    radial-gradient(ellipse 120% 90% at 20% 100%, #16232b 0%, rgba(11, 10, 9, 0) 60%),
-    linear-gradient(150deg, #101a1f 0%, #0b0a09 65%);
+    radial-gradient(ellipse 70% 60% at 66% 34%, #3d1638 0%, rgba(11, 10, 9, 0) 70%),
+    radial-gradient(ellipse 120% 90% at 20% 100%, #241026 0%, rgba(11, 10, 9, 0) 60%),
+    linear-gradient(150deg, #1a0d1c 0%, #0b0a09 65%);
 }
 
 .hero[data-mode='stylised'] .bgStylised {
