@@ -68,17 +68,19 @@
   z-index: 3;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1.4rem;
-  max-width: 30rem;
-  padding: 2.6rem 2.6rem 2.9rem;
-  background: rgba(12, 11, 9, 0.2);
-  backdrop-filter: blur(10px) saturate(115%);
-  -webkit-backdrop-filter: blur(10px) saturate(115%);
+  align-items: center;
+  text-align: center;
+  gap: 1.05rem;
+  width: min(24rem, 100%);
+  padding: 1.9rem 1.9rem 2.1rem;
+  background: rgba(12, 11, 9, 0.22);
+  backdrop-filter: blur(12px) saturate(115%);
+  -webkit-backdrop-filter: blur(12px) saturate(115%);
   border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.09),
-    0 26px 70px rgba(0, 0, 0, 0.3);
+    0 24px 64px rgba(0, 0, 0, 0.32);
 }
 
 @media (prefers-reduced-transparency: reduce) {
@@ -111,6 +113,7 @@
   padding: 3px;
   background: rgba(0, 0, 0, 0.32);
   border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
@@ -122,6 +125,7 @@
   left: 3px;
   width: calc(50% - 3px);
   background: var(--accent);
+  border-radius: 999px;
   box-shadow:
     0 1px 4px rgba(0, 0, 0, 0.45),
     0 0 14px var(--accent-glow);
@@ -164,7 +168,7 @@
 
 .signature {
   display: block;
-  width: min(20rem, 62vw);
+  width: min(17rem, 82%);
   height: auto;
   filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
 }
@@ -181,12 +185,14 @@
 }
 
 .enter {
-  margin-top: 0.5rem;
-  padding: 0.9rem 2rem;
+  align-self: center;
+  margin-top: 0.35rem;
+  padding: 0.85rem 2.2rem;
   border: 1px solid var(--accent);
+  border-radius: 999px;
   color: var(--accent);
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
+  font-size: 0.76rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   white-space: nowrap;
   transition:
@@ -224,13 +230,13 @@
     padding: 2.5rem 1rem 2rem;
   }
   .card {
-    max-width: 100%;
     width: 100%;
     gap: 0.9rem;
-    padding: 1.6rem 1.4rem 1.8rem;
+    padding: 1.6rem 1.4rem 1.85rem;
+    border-radius: 18px;
   }
   .signature {
-    width: min(60vw, 13rem);
+    width: min(58vw, 12rem);
   }
   .toggleOption {
     font-size: 0.6rem;
