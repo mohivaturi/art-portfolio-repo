@@ -26,15 +26,13 @@
   z-index: 0;
 }
 
-/* TODO: placeholder until the western / anime hero video is supplied */
+/* stylised hero: a slow Ken Burns loop of the Miami Vice piece */
 .bgStylised {
   z-index: 1;
   opacity: 0;
+  object-position: center center;
+  transform: none;
   transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);
-  background:
-    radial-gradient(ellipse 70% 60% at 66% 34%, #3d1638 0%, rgba(11, 10, 9, 0) 70%),
-    radial-gradient(ellipse 120% 90% at 20% 100%, #241026 0%, rgba(11, 10, 9, 0) 60%),
-    linear-gradient(150deg, #1a0d1c 0%, #0b0a09 65%);
 }
 
 .hero[data-mode='stylised'] .bgStylised {
@@ -226,11 +224,15 @@
 @media (max-width: 768px) {
   .hero {
     min-height: 0;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
     padding: 2.5rem 1rem 2rem;
   }
   .card {
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
     gap: 0.9rem;
     padding: 1.6rem 1.4rem 1.85rem;
     border-radius: 18px;

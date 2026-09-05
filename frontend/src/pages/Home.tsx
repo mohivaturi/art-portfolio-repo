@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import bgVideo from '../assets/mahadev-bg.mp4'
 import bgPoster from '../assets/mahadev-bg-poster.jpg'
+import bgVideoStylised from '../assets/miami-vice-bg.mp4'
+import bgPosterStylised from '../assets/miami-vice-poster.jpg'
 import signatureSacred from '../assets/signature-sacred.png'
 import signatureStylised from '../assets/signature-stylised.png'
 import styles from './Home.module.css'
@@ -55,8 +57,17 @@ export default function Home() {
         preload="auto"
         aria-hidden="true"
       />
-      {/* TODO: swap for the western / anime hero video once it's ready */}
-      <div className={`${styles.bg} ${styles.bgStylised}`} aria-hidden="true" />
+      <video
+        className={`${styles.bg} ${styles.bgStylised}`}
+        src={bgVideoStylised}
+        poster={bgPosterStylised}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      />
       <span className={styles.scrim} aria-hidden="true" />
 
       <div className={styles.card}>
