@@ -73,7 +73,7 @@ export const artworks: Artwork[] = [
       { label: 'Rough sketch', src: asset('lalbaugcha-raja/sketch.jpg') },
     ],
     description:
-      "The inspiration comes from Mumbai's famous Lalbaugcha Raja. I created this piece during last year's Ganesh Chaturthi. Visiting his mandap during the festival is still on my checklist.",
+      "The inspiration comes from Mumbai's famous Lalbaugcha Raja. I created this piece during the 2025 Ganesh Chaturthi. Visiting his mandap during the festival is still on my checklist.",
   },
   {
     slug: 'venkataramana-murthy',
