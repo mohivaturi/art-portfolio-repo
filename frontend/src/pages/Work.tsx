@@ -35,6 +35,7 @@ export default function Work() {
         <p className={styles.meta}>
           {art.year} &middot; {art.medium}
         </p>
+        <p className={styles.description}>{art.description}</p>
       </header>
 
       <div className={styles.stages}>
@@ -56,8 +57,6 @@ export default function Work() {
           </figure>
         ))}
       </div>
-
-      <p className={styles.description}>{art.description}</p>
 
       <nav className={styles.pager}>
         {prev ? (
