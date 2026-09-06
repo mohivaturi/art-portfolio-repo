@@ -29,12 +29,7 @@ export default function Collections({ variant = 'sacred' }: Props) {
     <section className={styles.page}>
       <header className={styles.head}>
         <h1 className={styles.eyebrow}>{stylised ? 'Stylised' : 'Sacred'}</h1>
-        <Link
-          className={styles.crossLink}
-          to={stylised ? '/collections' : '/collections/stylised'}
-        >
-          {stylised ? 'See the sacred work' : 'See the stylised work'}
-        </Link>
+        <p className={styles.hint}>Click any piece to see how it came together</p>
       </header>
 
       {items.length === 0 ? (
