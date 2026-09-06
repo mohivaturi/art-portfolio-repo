@@ -4,8 +4,8 @@ import styles from './Collections.module.css'
 
 type Props = { variant?: 'sacred' | 'stylised' }
 
-// photoshop first, then paint.net
-const TOOL_ORDER: Tool[] = ['photoshop', 'paintnet']
+// newest tool first, oldest last
+const TOOL_ORDER: Tool[] = ['photoshop', 'paintnet', 'mspaint']
 
 export default function Collections({ variant = 'sacred' }: Props) {
   const stylised = variant === 'stylised'

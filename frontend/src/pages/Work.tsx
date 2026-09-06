@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { bySlug, byStyle } from '../data/artworks'
+import { bySlug, byStyle, descriptionOf } from '../data/artworks'
 import styles from './Work.module.css'
 
 // render *word* as emphasis so terms like *nijarupa* sit in italic
@@ -50,7 +50,7 @@ export default function Work() {
             {art.year} &middot; {art.medium}
           </p>
           {art.quote && <p className={styles.quote}>{art.quote}</p>}
-          <p className={styles.description}>{emphasise(art.description)}</p>
+          <p className={styles.description}>{emphasise(descriptionOf(art))}</p>
         </header>
       </aside>
 

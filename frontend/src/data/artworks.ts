@@ -20,7 +20,7 @@ export type Stage = {
 }
 
 /** tool the piece was made in - the gallery groups by this */
-export type Tool = 'photoshop' | 'paintnet'
+export type Tool = 'photoshop' | 'paintnet' | 'mspaint'
 
 export type Artwork = {
   slug: string
@@ -35,7 +35,8 @@ export type Artwork = {
   tool?: Tool
   cover: string
   stages: Stage[]
-  description: string
+  /** omit to fall back to the shared toolBlurb for this piece's tool */
+  description?: string
 }
 
 export const toolOf = (a: Artwork): Tool => a.tool ?? 'photoshop'
@@ -43,7 +44,17 @@ export const toolOf = (a: Artwork): Tool => a.tool ?? 'photoshop'
 export const toolLabel: Record<Tool, string> = {
   photoshop: 'Photoshop',
   paintnet: 'Paint.NET',
+  mspaint: 'MS Paint',
 }
+
+/** shown in place of a per-piece description when one isn't given */
+export const toolBlurb: Partial<Record<Tool, string>> = {
+  mspaint:
+    'My first taste of digital art, through MS Paint. Every line was drawn with the mouse, all of it slow, manual, rigid work. I still do not know how I managed it back then, in my schooling years in the late 2000s.',
+}
+
+export const descriptionOf = (a: Artwork): string =>
+  a.description ?? toolBlurb[toolOf(a)] ?? ''
 
 // real files: src/assets/work/<slug>/<stage>.jpg
 const files = import.meta.glob('../assets/work/**/*.{jpg,jpeg,png,webp}', {
@@ -210,7 +221,7 @@ export const artworks: Artwork[] = [
     slug: 'ram-darbar',
     title: 'Ram Darbar',
     subtitle: 'Steady through every storm.',
-    year: '2021',
+    year: '2022',
     medium: 'Digital',
     style: 'sacred',
     tool: 'paintnet',
@@ -230,6 +241,17 @@ export const artworks: Artwork[] = [
     stages: [{ label: 'Final', src: asset('adiyogi-silhouette/final.jpg') }],
     description:
       'My first real introduction to Photoshop, put to work on this vector piece. The outline took barely fifteen minutes; the detailing, close to two hours.',
+  },
+  {
+    slug: 'bhakta-anjaneya',
+    title: 'Bhakta Anjaneya',
+    subtitle: 'Rama lives in his chest.',
+    year: 'late 2000s',
+    medium: 'MS Paint',
+    style: 'sacred',
+    tool: 'mspaint',
+    cover: asset('bhakta-anjaneya/final.jpg'),
+    stages: [{ label: 'Final', src: asset('bhakta-anjaneya/final.jpg') }],
   },
   // --- placeholders (varied sizes) ---
   {
