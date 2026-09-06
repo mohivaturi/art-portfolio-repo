@@ -38,66 +38,70 @@ export default function Work() {
 
   return (
     <article className={styles.page}>
-      <Link to={collectionPath} className={styles.back}>
-        &larr; Gallery
-      </Link>
+      <aside className={styles.aside}>
+        <Link to={collectionPath} className={styles.back}>
+          &larr; Gallery
+        </Link>
 
-      <header className={styles.head}>
-        <h1 className={styles.title}>
-          {art.title}
-          {art.subtitle && (
-            <>
-              <br />
-              <span className={styles.subtitle}>{art.subtitle}</span>
-            </>
-          )}
-        </h1>
-        <p className={styles.meta}>
-          {art.year} &middot; {art.medium}
-        </p>
-        {art.quote && <p className={styles.quote}>{art.quote}</p>}
-        <p className={styles.description}>{emphasise(art.description)}</p>
-      </header>
-
-      <div className={styles.stages}>
-        {art.stages.map((stage, n) => (
-          <figure key={n} className={styles.stage}>
-            {art.stages.length > 1 && (
-              <span className={styles.stageLabel}>{stage.label}</span>
+        <header className={styles.head}>
+          <h1 className={styles.title}>
+            {art.title}
+            {art.subtitle && (
+              <>
+                <br />
+                <span className={styles.subtitle}>{art.subtitle}</span>
+              </>
             )}
-            <img
-              className={
-                stage.invert
-                  ? `${styles.stageImg} ${styles.stageImgInvert}`
-                  : styles.stageImg
-              }
-              src={stage.src}
-              alt={`${art.title} — ${stage.label}`}
-              loading={n === 0 ? 'eager' : 'lazy'}
-            />
-          </figure>
-        ))}
-      </div>
+          </h1>
+          <p className={styles.meta}>
+            {art.year} &middot; {art.medium}
+          </p>
+          {art.quote && <p className={styles.quote}>{art.quote}</p>}
+          <p className={styles.description}>{emphasise(art.description)}</p>
+        </header>
+      </aside>
 
-      <nav className={styles.pager}>
-        {prev ? (
-          <Link to={`/work/${prev.slug}`} className={styles.pagerLink}>
-            &larr; {prev.title}
-          </Link>
-        ) : (
-          <span />
-        )}
-        {next ? (
-          <Link
-            to={`/work/${next.slug}`}
-            className={`${styles.pagerLink} ${styles.pagerNext}`}
-          >
-            {next.title} &rarr;
-          </Link>
-        ) : (
-          <span />
-        )}
-      </nav>
+      <div className={styles.main}>
+        <div className={styles.stages}>
+          {art.stages.map((stage, n) => (
+            <figure key={n} className={styles.stage}>
+              {art.stages.length > 1 && (
+                <span className={styles.stageLabel}>{stage.label}</span>
+              )}
+              <img
+                className={
+                  stage.invert
+                    ? `${styles.stageImg} ${styles.stageImgInvert}`
+                    : styles.stageImg
+                }
+                src={stage.src}
+                alt={`${art.title} — ${stage.label}`}
+                loading={n === 0 ? 'eager' : 'lazy'}
+              />
+            </figure>
+          ))}
+        </div>
+
+        <nav className={styles.pager}>
+          {prev ? (
+            <Link to={`/work/${prev.slug}`} className={styles.pagerLink}>
+              &larr; {prev.title}
+            </Link>
+          ) : (
+            <span />
+          )}
+          {next ? (
+            <Link
+              to={`/work/${next.slug}`}
+              className={`${styles.pagerLink} ${styles.pagerNext}`}
+            >
+              {next.title} &rarr;
+            </Link>
+          ) : (
+            <span />
+          )}
+        </nav>
+      </div>
     </article>
   )
 }
