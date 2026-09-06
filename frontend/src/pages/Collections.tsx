@@ -28,7 +28,10 @@ export default function Collections({ variant = 'sacred' }: Props) {
   return (
     <section className={styles.page}>
       <header className={styles.head}>
-        <h1 className={styles.eyebrow}>{stylised ? 'Stylised' : 'Sacred'}</h1>
+        <div className={styles.heading}>
+          <h1 className={styles.eyebrow}>{stylised ? 'Stylised' : 'Sacred'}</h1>
+          <p className={styles.medium}>Digital</p>
+        </div>
         <p className={styles.hint}>Click any piece to see how it came together</p>
       </header>
 
