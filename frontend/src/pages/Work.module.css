@@ -2,7 +2,7 @@
   flex: 1;
   min-height: 100%;
   width: 100%;
-  max-width: 1180px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: clamp(1.75rem, 4vw, 3rem) clamp(1.5rem, 6vw, 3rem) 6rem;
 }
@@ -21,8 +21,7 @@
 }
 
 .head {
-  max-width: 64ch;
-  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+  margin-bottom: 2rem;
 }
 
 .title {
@@ -40,16 +39,17 @@
 }
 
 .subtitle {
-  margin: 0.5rem 0 0;
+  margin: 0.55rem 0 0;
   font-weight: 400;
   font-size: 0.95rem;
   letter-spacing: 0.02em;
   line-height: 1.35;
   color: var(--ink-dim);
+  text-wrap: balance;
 }
 
 .meta {
-  margin: 0.65rem 0 0;
+  margin: 0.7rem 0 0;
   font-size: 0.8rem;
   letter-spacing: 0.06em;
   color: var(--ink-dim);
@@ -57,7 +57,6 @@
 
 .quote {
   margin: 1.1rem 0 0;
-  max-width: 60ch;
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.15rem;
@@ -67,7 +66,6 @@
 
 .description {
   margin: 0.9rem 0 0;
-  max-width: 62ch;
   font-size: 0.95rem;
   line-height: 1.7;
   color: var(--ink);
@@ -103,7 +101,7 @@
   width: auto;
   max-width: 100%;
   /* a whole stage stays within the viewport - no scrolling one image */
-  max-height: 84vh;
+  max-height: 82vh;
   height: auto;
   border: 1px solid var(--line);
 }
@@ -136,9 +134,24 @@
   text-align: right;
 }
 
-/* desktop: one stage per screen so a whole image reads without scrolling it.
-   the first stage shares the screen with the title block, so it flows normally. */
+/* --- desktop: title block to the side so each image owns the screen --- */
 @media (min-width: 1000px) {
+  .page {
+    display: grid;
+    grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .aside {
+    position: sticky;
+    top: clamp(1.75rem, 4vw, 3rem);
+  }
+
+  .head {
+    margin-bottom: 0;
+  }
+
   .stages {
     gap: 0;
   }
@@ -149,19 +162,8 @@
     padding: 2rem 0;
   }
 
-  .stage:first-of-type {
-    min-height: 0;
-    justify-content: flex-start;
-    padding-top: 0;
-    margin-bottom: 8vh;
-  }
-
-  .stage:first-of-type .stageImg {
-    max-height: 74vh;
-  }
-
   .stageImg {
-    max-height: 88vh;
+    max-height: 90vh;
   }
 }
 
