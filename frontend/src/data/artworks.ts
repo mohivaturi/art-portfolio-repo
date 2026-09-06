@@ -41,7 +41,7 @@ export type Artwork = {
 export const toolOf = (a: Artwork): Tool => a.tool ?? 'photoshop'
 
 export const toolLabel: Record<Tool, string> = {
-  photoshop: 'Photoshop',
+  photoshop: 'Adobe Photoshop / Illustrator',
   paintnet: 'Paint.NET',
   mspaint: 'MS Paint',
 }
