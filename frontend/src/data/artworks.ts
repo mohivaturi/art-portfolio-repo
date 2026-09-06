@@ -96,6 +96,23 @@ export const artworks: Artwork[] = [
       'I felt his infinite aura on my last visit to his abode. Whether the *nijarupa* darshan or the full *alankara*, his presence is unmatched.',
   },
   {
+    slug: 'sridevi-bhudevi-venkataramana',
+    title: 'Sridevi Bhudevi Sametha Venkataramana Murthy',
+    subtitle: 'Flanked by Sridevi and Bhudevi.',
+    year: '2026',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('sridevi-bhudevi-venkataramana/final.jpg'),
+    stages: [
+      { label: 'Final', src: asset('sridevi-bhudevi-venkataramana/final.jpg') },
+      { label: 'Nijarupa', src: asset('sridevi-bhudevi-venkataramana/nijarupa.jpg') },
+      { label: 'Line art', src: asset('sridevi-bhudevi-venkataramana/line-art.jpg') },
+      { label: 'Rough sketch', src: asset('sridevi-bhudevi-venkataramana/sketch.jpg') },
+    ],
+    description:
+      'Venkataramana at Tirumala with his consorts under the golden torana, worked up from the line drawing through the *nijarupa* to the full *alankara*.',
+  },
+  {
     slug: 'mahadev',
     title: 'Mahadev',
     subtitle: 'He is all and everything. He is the Universe.',
@@ -130,15 +147,6 @@ export const artworks: Artwork[] = [
       'Loosely: golden-hued and finely robed, studs in his ears and curls in his hair. That is how Shri Tulsidas describes him in the Hanuman Chalisa, and I tried to carry the same into this piece.',
   },
   // --- placeholders (varied sizes) ---
-  {
-    slug: 'nataraja',
-    title: 'Nataraja',
-    year: '2024',
-    medium: 'Digital',
-    style: 'sacred',
-    ...ph('nataraja', 1100, 1550),
-    description: 'The cosmic dance in the ring of fire. A study of motion held still.',
-  },
   {
     slug: 'ardhanarishvara',
     title: 'Ardhanarishvara',
