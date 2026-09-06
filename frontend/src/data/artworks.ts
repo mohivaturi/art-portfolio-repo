@@ -47,10 +47,10 @@ export const toolLabel: Record<Tool, string> = {
   mspaint: 'MS Paint',
 }
 
-/** shown in place of a per-piece description when one isn't given */
+/** shown once above a tool group, and as the fallback description for its pieces */
 export const toolBlurb: Partial<Record<Tool, string>> = {
   mspaint:
-    'My first taste of digital art, through MS Paint. Every line was drawn with the mouse, all of it slow, manual, rigid work. I still do not know how I managed it back then, in my schooling years in the late 2000s.',
+    'My first taste of digital art, through MS Paint. Every line was drawn with the mouse, all of it slow, manual, rigid work. I still do not know how I managed it back then, in my schooling years in the late 2000s. There was a lot more work from that time, most of it now lost.',
 }
 
 export const descriptionOf = (a: Artwork): string =>
@@ -245,13 +245,42 @@ export const artworks: Artwork[] = [
   {
     slug: 'bhakta-anjaneya',
     title: 'Bhakta Anjaneya',
-    subtitle: 'Rama lives in his chest.',
     year: 'late 2000s',
     medium: 'MS Paint',
     style: 'sacred',
     tool: 'mspaint',
     cover: asset('bhakta-anjaneya/final.jpg'),
     stages: [{ label: 'Final', src: asset('bhakta-anjaneya/final.jpg') }],
+  },
+  {
+    slug: 'veera-anjaneya',
+    title: 'Veera Anjaneya',
+    year: 'late 2000s',
+    medium: 'MS Paint',
+    style: 'sacred',
+    tool: 'mspaint',
+    cover: asset('veera-anjaneya/final.jpg'),
+    stages: [{ label: 'Final', src: asset('veera-anjaneya/final.jpg') }],
+  },
+  {
+    slug: 'devi',
+    title: 'Devi',
+    year: 'late 2000s',
+    medium: 'MS Paint',
+    style: 'sacred',
+    tool: 'mspaint',
+    cover: asset('devi/final.jpg'),
+    stages: [{ label: 'Final', src: asset('devi/final.jpg') }],
+  },
+  {
+    slug: 'shiva-thandavam',
+    title: 'Shiva Thandavam',
+    year: 'late 2000s',
+    medium: 'MS Paint',
+    style: 'sacred',
+    tool: 'mspaint',
+    cover: asset('shiva-thandavam/final.jpg'),
+    stages: [{ label: 'Final', src: asset('shiva-thandavam/final.jpg') }],
   },
   // --- placeholders (varied sizes) ---
   {

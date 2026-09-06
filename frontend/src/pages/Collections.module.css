@@ -56,6 +56,34 @@
   color: var(--ink-dim);
 }
 
+.groupBlurb {
+  max-width: 60ch;
+  margin: 0 0 1.6rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--ink);
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* four across for the small tool collections */
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- masonry via CSS columns --- */
 .grid {
   max-width: 1400px;
@@ -80,6 +108,9 @@
   break-inside: avoid;
   margin-bottom: clamp(1rem, 2.5vw, 2rem);
   color: inherit;
+}
+.row .tile {
+  margin-bottom: 0;
 }
 
 .tileImg {

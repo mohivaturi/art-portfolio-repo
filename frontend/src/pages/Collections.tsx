@@ -1,5 +1,12 @@
 import { Link } from 'react-router-dom'
-import { byStyle, toolLabel, toolOf, type Artwork, type Tool } from '../data/artworks'
+import {
+  byStyle,
+  toolBlurb,
+  toolLabel,
+  toolOf,
+  type Artwork,
+  type Tool,
+} from '../data/artworks'
 import styles from './Collections.module.css'
 
 type Props = { variant?: 'sacred' | 'stylised' }
@@ -33,18 +40,22 @@ export default function Collections({ variant = 'sacred' }: Props) {
       {items.length === 0 ? (
         <p className={styles.empty}>This catalogue is being put together.</p>
       ) : (
-        groups.map((group) => (
-          <div key={group.tool} className={styles.group}>
-            {showLabels && (
-              <p className={styles.groupLabel}>{toolLabel[group.tool]}</p>
-            )}
-            <div className={styles.grid}>
-              {group.items.map((art) => (
-                <Tile key={art.slug} art={art} />
-              ))}
+        groups.map((group) => {
+          const blurb = toolBlurb[group.tool]
+          return (
+            <div key={group.tool} className={styles.group}>
+              {showLabels && (
+                <p className={styles.groupLabel}>{toolLabel[group.tool]}</p>
+              )}
+              {blurb && <p className={styles.groupBlurb}>{blurb}</p>}
+              <div className={blurb ? styles.row : styles.grid}>
+                {group.items.map((art) => (
+                  <Tile key={art.slug} art={art} />
+                ))}
+              </div>
             </div>
-          </div>
-        ))
+          )
+        })
       )}
     </section>
   )
