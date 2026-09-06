@@ -207,6 +207,19 @@ export const artworks: Artwork[] = [
       'Before Photoshop I worked in a program called Paint.NET. This is the piece where I first started using a pen tablet.',
   },
   {
+    slug: 'ram-darbar',
+    title: 'Ram Darbar',
+    subtitle: 'Steady through every storm.',
+    year: '2021',
+    medium: 'Digital',
+    style: 'sacred',
+    tool: 'paintnet',
+    cover: asset('ram-darbar/final.jpg'),
+    stages: [{ label: 'Final', src: asset('ram-darbar/final.jpg') }],
+    description:
+      "Rama's whole life was uncertain, yet he never wavered within. That steadiness is the quality I would like to take from him.",
+  },
+  {
     slug: 'adiyogi-silhouette',
     title: 'Adiyogi Silhouette',
     subtitle: 'The first yogi.',
@@ -236,15 +249,6 @@ export const artworks: Artwork[] = [
     style: 'sacred',
     ...ph('ganesha-dhyana', 1200, 1200),
     description: 'The remover of obstacles, seated and still. Warm tones on a dark ground.',
-  },
-  {
-    slug: 'kali',
-    title: 'Kali',
-    year: '2023',
-    medium: 'Digital',
-    style: 'sacred',
-    ...ph('kali', 1400, 1000),
-    description: 'Time and destruction. High contrast, minimal palette, a lot of black.',
   },
   {
     slug: 'saraswati',
