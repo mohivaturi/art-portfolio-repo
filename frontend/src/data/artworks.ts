@@ -182,11 +182,26 @@ export const artworks: Artwork[] = [
     slug: 'adiyogi',
     title: 'Adiyogi',
     subtitle: 'The first yogi.',
+    year: '2018',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('adiyogi/final.jpg'),
+    stages: [
+      { label: 'Final', src: asset('adiyogi/final.jpg') },
+      { label: 'Earlier version', src: asset('adiyogi/earlier.jpg') },
+    ],
+    description:
+      'Before Photoshop I worked in a program called Paint.NET. This is the piece where I first started using a pen tablet.',
+  },
+  {
+    slug: 'adiyogi-silhouette',
+    title: 'Adiyogi Silhouette',
+    subtitle: 'The first yogi.',
     year: '2022',
     medium: 'Vector',
     style: 'sacred',
-    cover: asset('adiyogi/final.jpg'),
-    stages: [{ label: 'Final', src: asset('adiyogi/final.jpg') }],
+    cover: asset('adiyogi-silhouette/final.jpg'),
+    stages: [{ label: 'Final', src: asset('adiyogi-silhouette/final.jpg') }],
     description:
       'My first real introduction to Photoshop, put to work on this vector piece. The outline took barely fifteen minutes; the detailing, close to two hours.',
   },
