@@ -98,7 +98,7 @@ export const artworks: Artwork[] = [
   {
     slug: 'sridevi-bhudevi-venkataramana',
     title: 'Sridevi Bhudevi Sametha Venkataramana Murthy',
-    subtitle: 'Flanked by Sridevi and Bhudevi.',
+    subtitle: 'The Lord of Kaliyuga stands with His divine consorts.',
     year: '2026',
     medium: 'Digital',
     style: 'sacred',
@@ -110,7 +110,7 @@ export const artworks: Artwork[] = [
       { label: 'Rough sketch', src: asset('sridevi-bhudevi-venkataramana/sketch.jpg') },
     ],
     description:
-      'Venkataramana at Tirumala with his consorts under the golden torana, worked up from the line drawing through the *nijarupa* to the full *alankara*.',
+      "An extension of my earlier Venkataramana Murthy. It felt wrong to leave him standing alone, so Sridevi and Bhudevi now flank him under the same golden torana, worked up from the line drawing through the *nijarupa* to the full *alankara*.",
   },
   {
     slug: 'mahadev',

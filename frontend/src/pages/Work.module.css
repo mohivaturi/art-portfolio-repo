@@ -2,7 +2,7 @@
   flex: 1;
   min-height: 100%;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: clamp(1.75rem, 4vw, 3rem) clamp(1.5rem, 6vw, 3rem) 6rem;
 }
@@ -21,43 +21,43 @@
 }
 
 .head {
-  margin-bottom: 0.5rem;
-  max-width: 60ch;
+  max-width: 64ch;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
 }
 
 .title {
-  margin: 0 0 0.45rem;
+  margin: 0;
   font-family: var(--font-ui);
   font-weight: 500;
-  font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+  font-size: clamp(1.7rem, 3.4vw, 2.3rem);
   letter-spacing: 0.01em;
-  line-height: 1.12;
+  line-height: 1.14;
   color: var(--accent);
   text-shadow:
     0 0 10px var(--accent-glow),
     0 0 26px var(--accent-glow);
+  text-wrap: balance;
 }
 
 .subtitle {
-  display: inline-block;
-  margin-top: 0.15rem;
+  margin: 0.5rem 0 0;
   font-weight: 400;
-  font-size: 0.5em;
-  letter-spacing: 0.06em;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
   color: var(--ink-dim);
-  text-shadow: none;
 }
 
 .meta {
-  margin: 0;
+  margin: 0.65rem 0 0;
   font-size: 0.8rem;
   letter-spacing: 0.06em;
   color: var(--ink-dim);
 }
 
 .quote {
-  margin: 1.1rem 0 0.5rem;
-  max-width: 52ch;
+  margin: 1.1rem 0 0;
+  max-width: 60ch;
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.15rem;
@@ -66,11 +66,15 @@
 }
 
 .description {
-  margin: 0.5rem 0 0;
-  max-width: 52ch;
+  margin: 0.9rem 0 0;
+  max-width: 62ch;
   font-size: 0.95rem;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--ink);
+  /* justified, Word-style block */
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
 }
 
 .stages {
@@ -83,11 +87,11 @@
   margin: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.9rem;
 }
 
 .stageLabel {
-  display: block;
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -99,7 +103,7 @@
   width: auto;
   max-width: 100%;
   /* a whole stage stays within the viewport - no scrolling one image */
-  max-height: 82vh;
+  max-height: 84vh;
   height: auto;
   border: 1px solid var(--line);
 }
@@ -132,37 +136,32 @@
   text-align: right;
 }
 
-/* --- desktop: title block to the side so each image owns the screen --- */
+/* desktop: one stage per screen so a whole image reads without scrolling it.
+   the first stage shares the screen with the title block, so it flows normally. */
 @media (min-width: 1000px) {
-  .page {
-    display: grid;
-    grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
-    column-gap: clamp(2.5rem, 5vw, 5rem);
-    align-items: start;
-  }
-
-  .aside {
-    position: sticky;
-    top: clamp(1.75rem, 4vw, 3rem);
-  }
-
-  .head {
-    margin-bottom: 0;
-  }
-
   .stages {
     gap: 0;
   }
 
   .stage {
     min-height: 100vh;
-    align-items: center;
     justify-content: center;
     padding: 2rem 0;
   }
 
+  .stage:first-of-type {
+    min-height: 0;
+    justify-content: flex-start;
+    padding-top: 0;
+    margin-bottom: 8vh;
+  }
+
+  .stage:first-of-type .stageImg {
+    max-height: 74vh;
+  }
+
   .stageImg {
-    max-height: 90vh;
+    max-height: 88vh;
   }
 }
 
