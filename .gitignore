@@ -23,3 +23,6 @@ cdk.out/
 
 # Original art masters - kept locally, not in git (large)
 frontend/art-source/
+
+# Gallery images - served as static files, synced to S3 separately, not in git
+frontend/public/work/

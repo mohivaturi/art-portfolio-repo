@@ -1,9 +1,10 @@
 /**
  * Artwork catalogue.
  *
- * Real images live in src/assets/work/<slug>/ and are picked up by the glob
- * below; reference them by filename. Pieces with only a final so far get a
- * single "Final" stage; add line-art / sketch entries as they exist.
+ * Image files live in frontend/public/work/<slug>/ and are served as static
+ * files at /work/<slug>/<stage>.jpg. That folder is git-ignored - the images
+ * are synced to S3 separately, not committed. Pieces with only a final so far
+ * get a single "Final" stage; add line-art / sketch entries as they exist.
  *
  * Order here drives both the gallery and the prev/next pager: newest first,
  * grouped by tool (Photoshop, then Paint.NET, then MS Paint).
@@ -55,18 +56,9 @@ export const toolBlurb: Partial<Record<Tool, string>> = {
 export const descriptionOf = (a: Artwork): string =>
   a.description ?? toolBlurb[toolOf(a)] ?? ''
 
-// real files: src/assets/work/<slug>/<stage>.jpg
-const files = import.meta.glob('../assets/work/**/*.{jpg,jpeg,png,webp}', {
-  eager: true,
-  import: 'default',
-}) as Record<string, string>
-
-// asset('lalbaugcha-raja/final.jpg')
-const asset = (path: string): string => {
-  const hit = Object.entries(files).find(([p]) => p.endsWith(`/${path}`))
-  if (!hit) throw new Error(`missing artwork asset: ${path}`)
-  return hit[1]
-}
+// asset('lalbaugcha-raja/final.jpg') -> '/work/lalbaugcha-raja/final.jpg'
+// served from frontend/public/work/ (git-ignored, synced to S3 out of band)
+const asset = (path: string): string => `/work/${path}`
 
 export const artworks: Artwork[] = [
   // --- Photoshop ---
