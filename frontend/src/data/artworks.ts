@@ -19,6 +19,9 @@ export type Stage = {
   invert?: boolean
 }
 
+/** tool the piece was made in - the gallery groups by this */
+export type Tool = 'photoshop' | 'paintnet'
+
 export type Artwork = {
   slug: string
   title: string
@@ -28,9 +31,18 @@ export type Artwork = {
   year: string
   medium: string
   style: Style
+  /** defaults to 'photoshop' when omitted */
+  tool?: Tool
   cover: string
   stages: Stage[]
   description: string
+}
+
+export const toolOf = (a: Artwork): Tool => a.tool ?? 'photoshop'
+
+export const toolLabel: Record<Tool, string> = {
+  photoshop: 'Photoshop',
+  paintnet: 'Paint.NET',
 }
 
 // real files: src/assets/work/<slug>/<stage>.jpg
@@ -185,6 +197,7 @@ export const artworks: Artwork[] = [
     year: '2018',
     medium: 'Digital',
     style: 'sacred',
+    tool: 'paintnet',
     cover: asset('adiyogi/final.jpg'),
     stages: [
       { label: 'Final', src: asset('adiyogi/final.jpg') },

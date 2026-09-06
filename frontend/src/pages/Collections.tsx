@@ -1,12 +1,22 @@
 import { Link } from 'react-router-dom'
-import { byStyle } from '../data/artworks'
+import { byStyle, toolLabel, toolOf, type Artwork, type Tool } from '../data/artworks'
 import styles from './Collections.module.css'
 
 type Props = { variant?: 'sacred' | 'stylised' }
 
+// photoshop first, then paint.net
+const TOOL_ORDER: Tool[] = ['photoshop', 'paintnet']
+
 export default function Collections({ variant = 'sacred' }: Props) {
   const stylised = variant === 'stylised'
   const items = byStyle(variant)
+
+  const groups = TOOL_ORDER.map((tool) => ({
+    tool,
+    items: items.filter((a) => toolOf(a) === tool),
+  })).filter((g) => g.items.length > 0)
+
+  const showLabels = groups.length > 1
 
   return (
     <section className={styles.page}>
@@ -23,23 +33,36 @@ export default function Collections({ variant = 'sacred' }: Props) {
       {items.length === 0 ? (
         <p className={styles.empty}>This catalogue is being put together.</p>
       ) : (
-        <div className={styles.grid}>
-          {items.map((art) => (
-            <Link key={art.slug} to={`/work/${art.slug}`} className={styles.tile}>
-              <img
-                className={styles.tileImg}
-                src={art.cover}
-                alt={art.title}
-                loading="lazy"
-              />
-              <span className={styles.tileMeta}>
-                <span className={styles.tileTitle}>{art.title}</span>
-                <span className={styles.tileYear}>{art.year}</span>
-              </span>
-            </Link>
-          ))}
-        </div>
+        groups.map((group) => (
+          <div key={group.tool} className={styles.group}>
+            {showLabels && (
+              <p className={styles.groupLabel}>{toolLabel[group.tool]}</p>
+            )}
+            <div className={styles.grid}>
+              {group.items.map((art) => (
+                <Tile key={art.slug} art={art} />
+              ))}
+            </div>
+          </div>
+        ))
       )}
     </section>
+  )
+}
+
+function Tile({ art }: { art: Artwork }) {
+  return (
+    <Link to={`/work/${art.slug}`} className={styles.tile}>
+      <img
+        className={styles.tileImg}
+        src={art.cover}
+        alt={art.title}
+        loading="lazy"
+      />
+      <span className={styles.tileMeta}>
+        <span className={styles.tileTitle}>{art.title}</span>
+        <span className={styles.tileYear}>{art.year}</span>
+      </span>
+    </Link>
   )
 }
