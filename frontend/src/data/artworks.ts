@@ -162,6 +162,22 @@ export const artworks: Artwork[] = [
     description:
       'Whenever I visit the Hanuman temple near my home and look at the deity inside, I feel a magnetic pull that draws you in. That is where the inspiration for this piece comes from.',
   },
+  {
+    slug: 'dusshera',
+    title: 'Dussehra',
+    subtitle: 'Conquering your inner demons.',
+    year: '2022',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('dusshera/final.jpg'),
+    stages: [
+      { label: 'Final', src: asset('dusshera/final.jpg') },
+      { label: 'Line art', src: asset('dusshera/line-art.jpg') },
+      { label: 'Rough sketch', src: asset('dusshera/sketch.jpg') },
+    ],
+    description:
+      'Different regions each celebrate it their own way, but the core stays the same. It is a victory over the demons within.',
+  },
   // --- placeholders (varied sizes) ---
   {
     slug: 'ardhanarishvara',
@@ -180,15 +196,6 @@ export const artworks: Artwork[] = [
     style: 'sacred',
     ...ph('ganesha-dhyana', 1200, 1200),
     description: 'The remover of obstacles, seated and still. Warm tones on a dark ground.',
-  },
-  {
-    slug: 'durga',
-    title: 'Durga',
-    year: '2024',
-    medium: 'Digital',
-    style: 'sacred',
-    ...ph('durga', 1000, 1500),
-    description: 'Ten arms, one focus. Built the weapons first, the calm face last.',
   },
   {
     slug: 'kali',
