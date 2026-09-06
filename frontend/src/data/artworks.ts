@@ -194,7 +194,7 @@ export const artworks: Artwork[] = [
     slug: 'adiyogi',
     title: 'Adiyogi',
     subtitle: 'The first yogi.',
-    year: '2018',
+    year: '2021',
     medium: 'Digital',
     style: 'sacred',
     tool: 'paintnet',
