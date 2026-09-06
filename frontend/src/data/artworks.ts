@@ -71,6 +71,23 @@ const asset = (path: string): string => {
 export const artworks: Artwork[] = [
   // --- Photoshop ---
   {
+    slug: 'lalbaugcha-raja',
+    title: 'Lalbaugcha Raja',
+    subtitle: 'Remover of Obstacles',
+    year: '2025',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('lalbaugcha-raja/final.jpg'),
+    // shown top-to-bottom: final first, then back through the process
+    stages: [
+      { label: 'Final', src: asset('lalbaugcha-raja/final.jpg') },
+      { label: 'Line art', src: asset('lalbaugcha-raja/line-art.jpg') },
+      { label: 'Rough sketch', src: asset('lalbaugcha-raja/sketch.jpg') },
+    ],
+    description:
+      "The inspiration comes from Mumbai's famous Lalbaugcha Raja. I created this piece during the 2025 Ganesh Chaturthi. Visiting his mandap during the festival is still on my checklist.",
+  },
+  {
     slug: 'venkataramana-murthy',
     title: 'Venkataramana Murthy',
     subtitle: 'Cosmic in form, gentle in grace.',
@@ -120,23 +137,6 @@ export const artworks: Artwork[] = [
     ],
     description:
       'Whenever I visit the Hanuman temple near my home and look at the deity inside, I feel a magnetic pull that draws you in. That is where the inspiration for this piece comes from.',
-  },
-  {
-    slug: 'lalbaugcha-raja',
-    title: 'Lalbaugcha Raja',
-    subtitle: 'Remover of Obstacles',
-    year: '2025',
-    medium: 'Digital',
-    style: 'sacred',
-    cover: asset('lalbaugcha-raja/final.jpg'),
-    // shown top-to-bottom: final first, then back through the process
-    stages: [
-      { label: 'Final', src: asset('lalbaugcha-raja/final.jpg') },
-      { label: 'Line art', src: asset('lalbaugcha-raja/line-art.jpg') },
-      { label: 'Rough sketch', src: asset('lalbaugcha-raja/sketch.jpg') },
-    ],
-    description:
-      "The inspiration comes from Mumbai's famous Lalbaugcha Raja. I created this piece during the 2025 Ganesh Chaturthi. Visiting his mandap during the festival is still on my checklist.",
   },
   {
     slug: 'mahadev',
