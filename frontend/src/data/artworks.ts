@@ -110,7 +110,7 @@ export const artworks: Artwork[] = [
       { label: 'Rough sketch', src: asset('sridevi-bhudevi-venkataramana/sketch.jpg') },
     ],
     description:
-      "An extension of my earlier Venkataramana Murthy. It felt wrong to leave him standing alone, so Sridevi and Bhudevi now stand beside him, worked up from the line drawing through the *nijarupa* to the full *alankara*.",
+      "An extension of my earlier version. It felt wrong to leave him standing alone, so Sridevi and Bhudevi now stand beside him, worked up from the line drawing through the *nijarupa* to the full *alankara*.",
   },
   {
     slug: 'mahadev',
