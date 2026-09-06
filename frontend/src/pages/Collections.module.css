@@ -66,21 +66,16 @@
   hyphens: auto;
 }
 
-/* four across for the small tool collections */
+/* a compact side-by-side row for the small tool collections */
 .row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(1rem, 2.5vw, 2rem);
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: clamp(1rem, 2vw, 1.75rem);
   align-items: start;
-}
-@media (max-width: 900px) {
-  .row {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 @media (max-width: 480px) {
   .row {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

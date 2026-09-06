@@ -282,6 +282,26 @@ export const artworks: Artwork[] = [
     cover: asset('shiva-thandavam/final.jpg'),
     stages: [{ label: 'Final', src: asset('shiva-thandavam/final.jpg') }],
   },
+  {
+    slug: 'vasudeva',
+    title: 'Vasudeva',
+    year: 'late 2000s',
+    medium: 'MS Paint',
+    style: 'sacred',
+    tool: 'mspaint',
+    cover: asset('vasudeva/final.jpg'),
+    stages: [{ label: 'Final', src: asset('vasudeva/final.jpg') }],
+  },
+  {
+    slug: 'neele-megha-shyama',
+    title: 'Neele Megha Shyama',
+    year: 'late 2000s',
+    medium: 'MS Paint',
+    style: 'sacred',
+    tool: 'mspaint',
+    cover: asset('neele-megha-shyama/final.jpg'),
+    stages: [{ label: 'Final', src: asset('neele-megha-shyama/final.jpg') }],
+  },
   // --- placeholders (varied sizes) ---
   {
     slug: 'ardhanarishvara',
