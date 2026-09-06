@@ -178,6 +178,18 @@ export const artworks: Artwork[] = [
     description:
       'Different regions each celebrate it their own way, but the core stays the same. It is a victory over the demons within.',
   },
+  {
+    slug: 'adiyogi',
+    title: 'Adiyogi',
+    subtitle: 'The first yogi.',
+    year: '2022',
+    medium: 'Vector',
+    style: 'sacred',
+    cover: asset('adiyogi/final.jpg'),
+    stages: [{ label: 'Final', src: asset('adiyogi/final.jpg') }],
+    description:
+      'My first real introduction to Photoshop, put to work on this vector piece. The outline took barely fifteen minutes; the detailing, close to two hours.',
+  },
   // --- placeholders (varied sizes) ---
   {
     slug: 'ardhanarishvara',
@@ -226,15 +238,6 @@ export const artworks: Artwork[] = [
     stages: [{ label: 'Final', src: asset('gitopadesham/final.jpg') }],
     description:
       "A cowherd, a prankster, an enchanting flute player, a lover, a true warrior, a kingmaker, a mentor, and a colourful incarnation of the divine. It didn't turn out the way I had it in my mind, not that I'm unhappy with the outcome. PS: I lost the line art and rough sketches for this one, though.",
-  },
-  {
-    slug: 'trimurti',
-    title: 'Trimurti',
-    year: '2024',
-    medium: 'Digital',
-    style: 'sacred',
-    ...ph('trimurti', 1300, 1000),
-    description: 'Brahma, Vishnu, Shiva as one form. A symmetry exercise.',
   },
 ]
 
