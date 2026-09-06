@@ -212,7 +212,7 @@ export const artworks: Artwork[] = [
     slug: 'gitopadesham',
     title: 'Gitopadesham',
     subtitle: 'Lessons for the ages.',
-    year: '2026',
+    year: '2022',
     medium: 'Digital',
     style: 'sacred',
     cover: asset('gitopadesham/final.jpg'),
