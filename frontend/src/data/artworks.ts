@@ -1,13 +1,12 @@
 /**
  * Artwork catalogue.
  *
- * Real images live in src/assets/work/ and are picked up by the glob below;
- * reference them by filename. Pieces that only have a final so far get a
- * single "Final" stage; add sketch/outline entries as they exist.
+ * Real images live in src/assets/work/<slug>/ and are picked up by the glob
+ * below; reference them by filename. Pieces with only a final so far get a
+ * single "Final" stage; add line-art / sketch entries as they exist.
  *
- * Placeholder pieces use picsum.photos with a per-stage treatment so the
- * sketch -> outline -> final progression reads, and with varied sizes so the
- * masonry isn't a uniform grid.
+ * Order here drives both the gallery and the prev/next pager: newest first,
+ * grouped by tool (Photoshop, then Paint.NET, then MS Paint).
  */
 
 export type Style = 'sacred' | 'stylised'
@@ -69,37 +68,8 @@ const asset = (path: string): string => {
   return hit[1]
 }
 
-// picsum placeholder with the sketch -> outline -> final treatment
-const ph = (seed: string, w: number, h: number): Omit<Artwork, 'slug' | 'title' | 'year' | 'medium' | 'style' | 'description'> => {
-  const base = `https://picsum.photos/seed/${seed}/${w}/${h}`
-  return {
-    cover: base,
-    stages: [
-      { label: 'Sketch', src: `${base}?grayscale&blur=2` },
-      { label: 'Outline', src: `${base}?grayscale` },
-      { label: 'Final', src: base },
-    ],
-  }
-}
-
 export const artworks: Artwork[] = [
-  {
-    slug: 'lalbaugcha-raja',
-    title: 'Lalbaugcha Raja',
-    subtitle: 'Remover of Obstacles',
-    year: '2025',
-    medium: 'Digital',
-    style: 'sacred',
-    cover: asset('lalbaugcha-raja/final.jpg'),
-    // shown top-to-bottom: final first, then back through the process
-    stages: [
-      { label: 'Final', src: asset('lalbaugcha-raja/final.jpg') },
-      { label: 'Line art', src: asset('lalbaugcha-raja/line-art.jpg') },
-      { label: 'Rough sketch', src: asset('lalbaugcha-raja/sketch.jpg') },
-    ],
-    description:
-      "The inspiration comes from Mumbai's famous Lalbaugcha Raja. I created this piece during the 2025 Ganesh Chaturthi. Visiting his mandap during the festival is still on my checklist.",
-  },
+  // --- Photoshop ---
   {
     slug: 'venkataramana-murthy',
     title: 'Venkataramana Murthy',
@@ -136,6 +106,39 @@ export const artworks: Artwork[] = [
       "An extension of my earlier version. It felt wrong to leave him standing alone, so Sridevi and Bhudevi now stand beside him, worked up from the line drawing through the *nijarupa* to the full *alankara*.",
   },
   {
+    slug: 'mahaveer',
+    title: 'Mahaveer',
+    subtitle: 'Jai Chiranjeeva.',
+    year: '2026',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('mahaveer/final.jpg'),
+    stages: [
+      { label: 'Final', src: asset('mahaveer/final.jpg') },
+      { label: 'Line art', src: asset('mahaveer/line-art.jpg') },
+      { label: 'Rough sketch', src: asset('mahaveer/sketch.jpg') },
+    ],
+    description:
+      'Whenever I visit the Hanuman temple near my home and look at the deity inside, I feel a magnetic pull that draws you in. That is where the inspiration for this piece comes from.',
+  },
+  {
+    slug: 'lalbaugcha-raja',
+    title: 'Lalbaugcha Raja',
+    subtitle: 'Remover of Obstacles',
+    year: '2025',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('lalbaugcha-raja/final.jpg'),
+    // shown top-to-bottom: final first, then back through the process
+    stages: [
+      { label: 'Final', src: asset('lalbaugcha-raja/final.jpg') },
+      { label: 'Line art', src: asset('lalbaugcha-raja/line-art.jpg') },
+      { label: 'Rough sketch', src: asset('lalbaugcha-raja/sketch.jpg') },
+    ],
+    description:
+      "The inspiration comes from Mumbai's famous Lalbaugcha Raja. I created this piece during the 2025 Ganesh Chaturthi. Visiting his mandap during the festival is still on my checklist.",
+  },
+  {
     slug: 'mahadev',
     title: 'Mahadev',
     subtitle: 'He is all and everything. He is the Universe.',
@@ -170,20 +173,16 @@ export const artworks: Artwork[] = [
       'Loosely: golden-hued and finely robed, studs in his ears and curls in his hair. That is how Shri Tulsidas describes him in the Hanuman Chalisa, and I tried to carry the same into this piece.',
   },
   {
-    slug: 'mahaveer',
-    title: 'Mahaveer',
-    subtitle: 'Jai Chiranjeeva.',
-    year: '2026',
+    slug: 'gitopadesham',
+    title: 'Gitopadesham',
+    subtitle: 'Lessons for the ages.',
+    year: '2022',
     medium: 'Digital',
     style: 'sacred',
-    cover: asset('mahaveer/final.jpg'),
-    stages: [
-      { label: 'Final', src: asset('mahaveer/final.jpg') },
-      { label: 'Line art', src: asset('mahaveer/line-art.jpg') },
-      { label: 'Rough sketch', src: asset('mahaveer/sketch.jpg') },
-    ],
+    cover: asset('gitopadesham/final.jpg'),
+    stages: [{ label: 'Final', src: asset('gitopadesham/final.jpg') }],
     description:
-      'Whenever I visit the Hanuman temple near my home and look at the deity inside, I feel a magnetic pull that draws you in. That is where the inspiration for this piece comes from.',
+      "A cowherd, a prankster, an enchanting flute player, a lover, a true warrior, a kingmaker, a mentor, and a colourful incarnation of the divine. It didn't turn out the way I had it in my mind, not that I'm unhappy with the outcome. PS: I lost the line art and rough sketches for this one, though.",
   },
   {
     slug: 'dusshera',
@@ -202,6 +201,33 @@ export const artworks: Artwork[] = [
       'Different regions each celebrate it their own way, but the core stays the same. It is a victory over the demons within.',
   },
   {
+    slug: 'adiyogi-silhouette',
+    title: 'Adiyogi Silhouette',
+    subtitle: 'The first yogi.',
+    year: '2022',
+    medium: 'Vector',
+    style: 'sacred',
+    cover: asset('adiyogi-silhouette/final.jpg'),
+    stages: [{ label: 'Final', src: asset('adiyogi-silhouette/final.jpg') }],
+    description:
+      'My first real introduction to Photoshop, put to work on this vector piece. The outline took barely fifteen minutes; the detailing, close to two hours.',
+  },
+
+  // --- Paint.NET ---
+  {
+    slug: 'ram-darbar',
+    title: 'Ram Darbar',
+    subtitle: 'Steady through every storm.',
+    year: '2022',
+    medium: 'Digital',
+    style: 'sacred',
+    tool: 'paintnet',
+    cover: asset('ram-darbar/final.jpg'),
+    stages: [{ label: 'Final', src: asset('ram-darbar/final.jpg') }],
+    description:
+      "Rama's whole life was uncertain, yet he never wavered within. That steadiness is the quality I would like to take from him.",
+  },
+  {
     slug: 'adiyogi',
     title: 'Adiyogi',
     subtitle: 'The first yogi.',
@@ -217,31 +243,8 @@ export const artworks: Artwork[] = [
     description:
       'Before Photoshop I worked in a program called Paint.NET. This is the piece where I first started using a pen tablet.',
   },
-  {
-    slug: 'ram-darbar',
-    title: 'Ram Darbar',
-    subtitle: 'Steady through every storm.',
-    year: '2022',
-    medium: 'Digital',
-    style: 'sacred',
-    tool: 'paintnet',
-    cover: asset('ram-darbar/final.jpg'),
-    stages: [{ label: 'Final', src: asset('ram-darbar/final.jpg') }],
-    description:
-      "Rama's whole life was uncertain, yet he never wavered within. That steadiness is the quality I would like to take from him.",
-  },
-  {
-    slug: 'adiyogi-silhouette',
-    title: 'Adiyogi Silhouette',
-    subtitle: 'The first yogi.',
-    year: '2022',
-    medium: 'Vector',
-    style: 'sacred',
-    cover: asset('adiyogi-silhouette/final.jpg'),
-    stages: [{ label: 'Final', src: asset('adiyogi-silhouette/final.jpg') }],
-    description:
-      'My first real introduction to Photoshop, put to work on this vector piece. The outline took barely fifteen minutes; the detailing, close to two hours.',
-  },
+
+  // --- MS Paint (schooling years, late 2000s) ---
   {
     slug: 'bhakta-anjaneya',
     title: 'Bhakta Anjaneya',
@@ -301,46 +304,6 @@ export const artworks: Artwork[] = [
     tool: 'mspaint',
     cover: asset('neele-megha-shyama/final.jpg'),
     stages: [{ label: 'Final', src: asset('neele-megha-shyama/final.jpg') }],
-  },
-  // --- placeholders (varied sizes) ---
-  {
-    slug: 'ardhanarishvara',
-    title: 'Ardhanarishvara',
-    year: '2024',
-    medium: 'Digital',
-    style: 'sacred',
-    ...ph('ardhanarishvara', 1100, 1300),
-    description: 'Half Shiva, half Parvati. The composition splits down the centre line.',
-  },
-  {
-    slug: 'ganesha-dhyana',
-    title: 'Ganesha in Dhyana',
-    year: '2023',
-    medium: 'Digital',
-    style: 'sacred',
-    ...ph('ganesha-dhyana', 1200, 1200),
-    description: 'The remover of obstacles, seated and still. Warm tones on a dark ground.',
-  },
-  {
-    slug: 'saraswati',
-    title: 'Saraswati',
-    year: '2024',
-    medium: 'Digital',
-    style: 'sacred',
-    ...ph('saraswati', 1100, 1400),
-    description: 'Knowledge and sound. The veena drives the whole composition.',
-  },
-  {
-    slug: 'gitopadesham',
-    title: 'Gitopadesham',
-    subtitle: 'Lessons for the ages.',
-    year: '2022',
-    medium: 'Digital',
-    style: 'sacred',
-    cover: asset('gitopadesham/final.jpg'),
-    stages: [{ label: 'Final', src: asset('gitopadesham/final.jpg') }],
-    description:
-      "A cowherd, a prankster, an enchanting flute player, a lover, a true warrior, a kingmaker, a mentor, and a colourful incarnation of the divine. It didn't turn out the way I had it in my mind, not that I'm unhappy with the outcome. PS: I lost the line art and rough sketches for this one, though.",
   },
 ]
 
