@@ -146,6 +146,22 @@ export const artworks: Artwork[] = [
     description:
       'Loosely: golden-hued and finely robed, studs in his ears and curls in his hair. That is how Shri Tulsidas describes him in the Hanuman Chalisa, and I tried to carry the same into this piece.',
   },
+  {
+    slug: 'mahaveer',
+    title: 'Mahaveer',
+    subtitle: 'Jai Chiranjeeva.',
+    year: '2026',
+    medium: 'Digital',
+    style: 'sacred',
+    cover: asset('mahaveer/final.jpg'),
+    stages: [
+      { label: 'Final', src: asset('mahaveer/final.jpg') },
+      { label: 'Line art', src: asset('mahaveer/line-art.jpg') },
+      { label: 'Rough sketch', src: asset('mahaveer/sketch.jpg') },
+    ],
+    description:
+      'Whenever I visit the Hanuman temple near my home and look at the deity inside, I feel a magnetic pull that draws you in. That is where the inspiration for this piece comes from.',
+  },
   // --- placeholders (varied sizes) ---
   {
     slug: 'ardhanarishvara',
@@ -191,15 +207,6 @@ export const artworks: Artwork[] = [
     style: 'sacred',
     ...ph('saraswati', 1100, 1400),
     description: 'Knowledge and sound. The veena drives the whole composition.',
-  },
-  {
-    slug: 'hanuman',
-    title: 'Hanuman',
-    year: '2023',
-    medium: 'Digital',
-    style: 'sacred',
-    ...ph('hanuman', 1500, 950),
-    description: 'Devotion and strength. A wide format to carry the leap.',
   },
   {
     slug: 'gitopadesham',
