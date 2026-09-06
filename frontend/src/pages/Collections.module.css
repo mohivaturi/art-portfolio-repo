@@ -14,11 +14,14 @@
 
 .eyebrow {
   margin: 0;
-  font-size: 0.72rem;
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--accent);
+  text-shadow:
+    0 0 10px var(--accent-glow),
+    0 0 22px var(--accent-glow);
 }
 
 .hint {
