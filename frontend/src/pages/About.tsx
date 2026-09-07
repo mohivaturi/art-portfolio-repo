@@ -18,7 +18,7 @@ export default function About() {
             loading="lazy"
           />
           <figcaption className={styles.caption}>
-            Hyderabad, already at it, with my grandparents.
+            Drawing with my grandfather, where all of this started.
           </figcaption>
         </figure>
       </div>
@@ -32,13 +32,21 @@ export default function About() {
           in the US. Self-taught at most things, this one included.
         </p>
         <p>
-          Drawing and painting have been part of my life for as long as I can
-          remember; that&rsquo;s me in the old photo, already at it. It puts a
-          kind of quiet in me, and the more hectic things get, the more I seem to
-          need it to stay sane.
+          The drawing started with my grandfather. He would bring home chalk and
+          the two of us would sit and draw together on a little board. He planted
+          the whole idea in me, so a big thank you to him for that. I&rsquo;m
+          sure he would love this work.
         </p>
         <p>
-          I want to do a lot more of it now. Hope you like what&rsquo;s here.
+          Somewhere along the way it became the thing that keeps me steady. It
+          puts a kind of quiet in me, and the more hectic life gets, the more I
+          seem to need it to stay sane.
+        </p>
+        <p>
+          Most of it is devotional, with a lighter stylised side for the films,
+          music and characters I grew up on. It began in MS Paint and now mostly
+          lives in Photoshop and Illustrator. I want to do a lot more of it now.
+          Hope you like what&rsquo;s here.
         </p>
       </div>
     </section>
