@@ -19,10 +19,10 @@ export default function About() {
           in the US. Self-taught at most things, this one included.
         </p>
         <p>
-          The drawing started with my grandfather. He would bring home chalk and
-          the two of us would sit and draw together on a little board. He planted
-          the whole idea in me, so a big shoutout to him for that. I&rsquo;m sure
-          he would love this work.
+          The drawing started with my Thata. He would bring home chalk and the
+          two of us would sit and draw together on a little board. He planted the
+          whole idea in me, so a big shoutout to him for that. I&rsquo;m sure he
+          would love this work.
         </p>
         <p>
           Somewhere along the way it became the thing that keeps me steady. It
@@ -31,17 +31,12 @@ export default function About() {
         </p>
       </div>
 
-      <figure className={styles.old}>
-        <img
-          className={styles.photo}
-          src="/about/tata-mama.jpg"
-          alt="A younger Mohith drawing on a board with his grandfather"
-          loading="lazy"
-        />
-        <figcaption className={styles.caption}>
-          Drawing with my grandfather, where all of this started.
-        </figcaption>
-      </figure>
+      <img
+        className={styles.photo}
+        src="/about/tata-mama.jpg"
+        alt="A younger Mohith drawing on a board with his Thata"
+        loading="lazy"
+      />
     </section>
   )
 }
