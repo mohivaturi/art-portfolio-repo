@@ -1,16 +1,7 @@
-import { useEffect } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom'
 import Sidebar from './components/Sidebar.tsx'
 import { bySlug } from './data/artworks'
 import styles from './App.module.css'
-
-function ScrollToTop() {
-  const { pathname } = useLocation()
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
-  return null
-}
 
 /** Which world (and therefore accent colour) the current route belongs to. */
 function resolveStyle(pathname: string, search: string): 'sacred' | 'stylised' {
@@ -33,7 +24,8 @@ export default function App() {
 
   return (
     <div className={styles.shell} data-style={style}>
-      <ScrollToTop />
+      {/* scroll to top on a new page, restore position on back/forward */}
+      <ScrollRestoration />
       <Sidebar />
       <main className={styles.main}>
         <Outlet />
