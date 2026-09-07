@@ -2,40 +2,22 @@
   flex: 1;
   min-height: 100%;
   width: 100%;
-  max-width: 1100px;
+  max-width: 940px;
   margin: 0 auto;
-  padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 6vw, 4rem) 6rem;
+  padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1.5rem, 6vw, 4rem);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: clamp(2rem, 5vw, 3.5rem);
+  justify-content: center;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
 }
 
-.photo {
-  display: block;
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  border: 1px solid var(--line);
-}
-
-.body {
-  max-width: 48ch;
-  text-align: center;
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--ink);
-}
-.body p {
-  margin: 0 0 1.1rem;
-}
-.body p:last-child {
-  margin-bottom: 0;
+.head {
+  max-width: 60ch;
 }
 
 .eyebrow {
-  margin: 0 0 0.6rem;
-  font-size: 0.72rem;
+  margin: 0 0 0.55rem;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -45,29 +27,71 @@
     0 0 22px var(--accent-glow);
 }
 
+/* same treatment as the gallery / work titles */
 .name {
-  margin: 0 0 1.6rem;
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  line-height: 1.1;
-  color: var(--ink);
+  margin: 0;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 4.5vw, 2.7rem);
+  letter-spacing: 0.01em;
+  line-height: 1.12;
+  color: var(--accent);
+  text-shadow:
+    0 0 12px var(--accent-glow),
+    0 0 30px var(--accent-glow);
 }
 
-/* --- desktop: photo left, words centre, grandfather photo right --- */
-@media (min-width: 900px) {
-  .page {
-    display: grid;
-    grid-template-columns: minmax(180px, 260px) minmax(0, 1fr) minmax(180px, 260px);
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border: 1px solid var(--line);
+}
+
+.text {
+  max-width: 54ch;
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.text p {
+  margin: 0 0 0.9rem;
+}
+.text p:last-child {
+  margin-bottom: 0;
+}
+
+.closer {
+  margin-top: 1rem !important;
+  font-size: 1.02rem;
+  color: var(--ink-dim);
+}
+
+/* --- desktop: photo and words side by side, sides alternating --- */
+@media (min-width: 780px) {
+  .row {
+    flex-direction: row;
     align-items: center;
-    column-gap: clamp(2.5rem, 5vw, 5rem);
+    gap: clamp(2rem, 4vw, 3.25rem);
+  }
+  .rowFlip {
+    flex-direction: row-reverse;
   }
 
   .photo {
-    max-width: 100%;
+    flex: 0 0 auto;
+    width: clamp(170px, 18vw, 210px);
   }
 
-  .body {
-    margin: 0 auto;
+  .text {
+    flex: 1;
   }
 }
