@@ -345,15 +345,15 @@ export const artworks: Artwork[] = [
       'Traced from an old pencil sketch of Goku, redrawn clean in Illustrator, then coloured. Dragon Ball Z was never just an anime to me; it is closer to a guide for living, always about getting better.',
   },
   {
-    slug: 'fall',
-    title: 'Fall',
-    year: '2022',
-    medium: 'Digital',
+    slug: 'lion-king',
+    title: 'Lion King',
+    year: 'late 2000s',
+    medium: 'MS Paint',
     style: 'stylised',
-    cover: asset('fall/final.jpg'),
-    stages: [{ label: 'Final', src: asset('fall/final.jpg') }],
+    cover: asset('lion-king/final.jpg'),
+    stages: [{ label: 'Final', src: asset('lion-king/final.jpg') }],
     description:
-      '“I’ll fall for you.” Not a bad pick-up line, is it? Lost the line art for this one, unfortunately.',
+      'One of my favourite movies of all time, and one of my favourite scenes: where Simba realises who he actually is. Late MS Paint work.',
   },
   {
     slug: 'man-with-no-name',
@@ -403,15 +403,15 @@ export const artworks: Artwork[] = [
       'I only got into his music after he was gone. Still groove to it every time. One of my early MS Paint pieces.',
   },
   {
-    slug: 'lion-king',
-    title: 'Lion King',
-    year: 'late 2000s',
-    medium: 'MS Paint',
+    slug: 'fall',
+    title: 'Fall',
+    year: '2022',
+    medium: 'Digital',
     style: 'stylised',
-    cover: asset('lion-king/final.jpg'),
-    stages: [{ label: 'Final', src: asset('lion-king/final.jpg') }],
+    cover: asset('fall/final.jpg'),
+    stages: [{ label: 'Final', src: asset('fall/final.jpg') }],
     description:
-      'One of my favourite movies of all time, and one of my favourite scenes: where Simba realises who he actually is. Late MS Paint work.',
+      '“I’ll fall for you.” Not a bad pick-up line, is it? Lost the line art for this one, unfortunately.',
   },
 ]
 
