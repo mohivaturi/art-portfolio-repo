@@ -235,6 +235,18 @@ export const artworks: Artwork[] = [
     description:
       'Before Photoshop I worked in a program called Paint.NET. This is the piece where I first started using a pen tablet.',
   },
+  {
+    slug: 'devi-face',
+    title: 'Devi',
+    year: '2022',
+    medium: 'Digital',
+    style: 'sacred',
+    tool: 'paintnet',
+    cover: asset('devi-face/final.jpg'),
+    stages: [{ label: 'Final', src: asset('devi-face/final.jpg') }],
+    description:
+      'The face of the goddess, pared back to the three eyes, the bindi and the nose ring.',
+  },
 
   // --- MS Paint (schooling years, late 2000s) ---
   {
