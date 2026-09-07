@@ -415,7 +415,7 @@ export const artworks: Artwork[] = [
   },
   {
     slug: 'sachin-sachin',
-    title: 'Sachin Sachin',
+    title: 'Sachin Sachin !!',
     subtitle: 'A straight drive, straighter than a line.',
     year: '2011',
     medium: 'MS Paint',
