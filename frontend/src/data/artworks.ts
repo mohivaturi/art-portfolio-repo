@@ -297,6 +297,22 @@ export const artworks: Artwork[] = [
     cover: asset('neele-megha-shyama/final.jpg'),
     stages: [{ label: 'Final', src: asset('neele-megha-shyama/final.jpg') }],
   },
+
+  // ===== Stylised =====
+  {
+    slug: 'sunny-day',
+    title: 'Sunny Day',
+    year: '2026',
+    medium: 'Digital',
+    style: 'stylised',
+    cover: asset('sunny-day/final.jpg'),
+    stages: [
+      { label: 'Final', src: asset('sunny-day/final.jpg') },
+      { label: 'Line art', src: asset('sunny-day/line-art.jpg') },
+    ],
+    description:
+      'A sunny day, maybe dawn, somewhere in Miami. You have probably met her already. Isn’t she hot?',
+  },
 ]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
