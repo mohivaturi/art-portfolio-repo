@@ -7,43 +7,44 @@
   padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 6vw, 4rem) 6rem;
   display: flex;
   flex-direction: column;
-  gap: clamp(2.5rem, 6vw, 4rem);
-}
-
-.photos {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 3.5rem);
 }
 
 .photo {
   display: block;
   width: 100%;
+  max-width: 320px;
   height: auto;
   border: 1px solid var(--line);
 }
 
 .old {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .caption {
   margin-top: 0.7rem;
+  max-width: 30ch;
   font-size: 0.78rem;
+  line-height: 1.5;
   letter-spacing: 0.02em;
+  text-align: center;
   color: var(--ink-dim);
 }
 
 .body {
-  max-width: 52ch;
+  max-width: 48ch;
+  text-align: center;
   font-size: 1rem;
   line-height: 1.75;
   color: var(--ink);
 }
 .body p {
   margin: 0 0 1.1rem;
-  text-align: justify;
-  hyphens: auto;
 }
 .body p:last-child {
   margin-bottom: 0;
@@ -70,17 +71,20 @@
   color: var(--ink);
 }
 
-/* --- desktop: photos left, words right --- */
-@media (min-width: 860px) {
+/* --- desktop: photo left, words centre, grandfather photo right --- */
+@media (min-width: 900px) {
   .page {
     display: grid;
-    grid-template-columns: minmax(280px, 400px) 1fr;
-    align-items: start;
-    column-gap: clamp(3rem, 6vw, 6rem);
+    grid-template-columns: minmax(180px, 260px) minmax(0, 1fr) minmax(180px, 260px);
+    align-items: center;
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+  }
+
+  .photo {
+    max-width: 100%;
   }
 
   .body {
-    position: sticky;
-    top: clamp(3rem, 7vw, 6rem);
+    margin: 0 auto;
   }
 }

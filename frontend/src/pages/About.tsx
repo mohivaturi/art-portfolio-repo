@@ -3,25 +3,12 @@ import styles from './About.module.css'
 export default function About() {
   return (
     <section className={styles.page}>
-      <div className={styles.photos}>
-        <img
-          className={styles.photo}
-          src="/about/mohith.jpg"
-          alt="Mohith Ivaturi"
-          loading="eager"
-        />
-        <figure className={styles.old}>
-          <img
-            className={styles.photo}
-            src="/about/tata-mama.jpg"
-            alt="A younger Mohith drawing on a slate, with his grandparents"
-            loading="lazy"
-          />
-          <figcaption className={styles.caption}>
-            Drawing with my grandfather, where all of this started.
-          </figcaption>
-        </figure>
-      </div>
+      <img
+        className={styles.photo}
+        src="/about/mohith.jpg"
+        alt="Mohith Ivaturi"
+        loading="eager"
+      />
 
       <div className={styles.body}>
         <p className={styles.eyebrow}>About</p>
@@ -42,13 +29,19 @@ export default function About() {
           puts a kind of quiet in me, and the more hectic life gets, the more I
           seem to need it to stay sane.
         </p>
-        <p>
-          Most of it is devotional, with a lighter stylised side for the films,
-          music and characters I grew up on. It began in MS Paint and now mostly
-          lives in Photoshop and Illustrator. I want to do a lot more of it now.
-          Hope you like what&rsquo;s here.
-        </p>
       </div>
+
+      <figure className={styles.old}>
+        <img
+          className={styles.photo}
+          src="/about/tata-mama.jpg"
+          alt="A younger Mohith drawing on a board with his grandfather"
+          loading="lazy"
+        />
+        <figcaption className={styles.caption}>
+          Drawing with my grandfather, where all of this started.
+        </figcaption>
+      </figure>
     </section>
   )
 }
