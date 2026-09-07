@@ -314,6 +314,21 @@ export const artworks: Artwork[] = [
     description:
       'A sunny day, maybe dawn, somewhere in Miami. You have probably met her already. Isn’t she hot?',
   },
+  {
+    slug: 'winter-is-coming',
+    title: 'Winter is Coming',
+    year: '2026',
+    medium: 'Digital',
+    style: 'stylised',
+    cover: asset('winter-is-coming/final.jpg'),
+    stages: [
+      { label: 'Final', src: asset('winter-is-coming/final.jpg') },
+      { label: 'Line art', src: asset('winter-is-coming/line-art.jpg') },
+      { label: 'Rough sketch', src: asset('winter-is-coming/sketch.jpg') },
+    ],
+    description:
+      'Winter is coming, so she settled in by the fire. The beanie stayed on.',
+  },
 ]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
