@@ -40,6 +40,12 @@ export default function About() {
             kind of quiet in the middle of a hectic life.
           </p>
           <p className={styles.closer}>I hope you liked my work.</p>
+          <p className={styles.email}>
+            email:{' '}
+            <a href="mailto:mohithivaturi1998@gmail.com">
+              mohithivaturi1998@gmail.com
+            </a>
+          </p>
         </div>
       </div>
     </section>

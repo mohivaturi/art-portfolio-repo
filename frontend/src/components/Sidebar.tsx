@@ -5,7 +5,6 @@ const links = [
   { to: '/', label: 'Home', end: true },
   { to: '/collections', label: 'Collections' },
   { to: '/about', label: 'About' },
-  { to: '/contact', label: 'Contact' },
 ]
 
 export default function Sidebar() {
