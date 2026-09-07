@@ -15,8 +15,8 @@ export default function About() {
         <h1 className={styles.name}>Mohith Ivaturi</h1>
 
         <p>
-          Hyderabad kid, now writing software somewhere in the US. Nobody taught
-          me any of it, this least of all.
+          Hyderabad kid, now writing software somewhere in the US. Pretty much
+          self-taught, this included.
         </p>
         <p>
           The drawing started with my Thata. He would bring home chalk and the
