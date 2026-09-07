@@ -308,8 +308,8 @@ export const artworks: Artwork[] = [
     cover: asset('sunny-day/final.jpg'),
     stages: [
       { label: 'Final', src: asset('sunny-day/final.jpg') },
-      { label: 'Miami dawn', src: asset('sunny-day/miami-dawn.jpg') },
       { label: 'Line art', src: asset('sunny-day/line-art.jpg') },
+      { label: 'Miami dawn', src: asset('sunny-day/miami-dawn.jpg') },
     ],
     description:
       'A sunny day, maybe dawn, somewhere in Miami. You have probably met her already. Isn’t she hot?',
