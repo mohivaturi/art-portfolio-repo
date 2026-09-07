@@ -388,6 +388,20 @@ export const artworks: Artwork[] = [
     description:
       'A tribute to one of the greatest actors of all time. He pulled off Lord Krishna effortlessly. Mayabazar is still my all-time favourite.',
   },
+  {
+    slug: 'king-of-pop',
+    title: 'King of Pop',
+    year: '2022',
+    medium: 'Digital',
+    style: 'stylised',
+    cover: asset('king-of-pop/final.jpg'),
+    stages: [
+      { label: 'Final', src: asset('king-of-pop/final.jpg') },
+      { label: 'Smooth Criminal', src: asset('king-of-pop/smooth-criminal.jpg') },
+    ],
+    description:
+      'I only got into his music after he was gone. Still groove to it every time. One of my early MS Paint pieces.',
+  },
 ]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
