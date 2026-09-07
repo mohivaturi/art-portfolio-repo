@@ -355,6 +355,17 @@ export const artworks: Artwork[] = [
     description:
       '“I’ll fall for you.” Not a bad pick-up line, is it? Lost the line art for this one, unfortunately.',
   },
+  {
+    slug: 'man-with-no-name',
+    title: 'Man With No Name',
+    year: '2022',
+    medium: 'Digital',
+    style: 'stylised',
+    cover: asset('man-with-no-name/final.jpg'),
+    stages: [{ label: 'Final', src: asset('man-with-no-name/final.jpg') }],
+    description:
+      "A nod to Clint Eastwood and Sergio Leone's spaghetti westerns. My favourite is The Good, the Bad and the Ugly. Do watch it.",
+  },
 ]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
