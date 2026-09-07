@@ -396,7 +396,7 @@ export const artworks: Artwork[] = [
     style: 'stylised',
     cover: asset('king-of-pop/final.jpg'),
     stages: [
-      { label: 'Final', src: asset('king-of-pop/final.jpg') },
+      { label: 'Billie Jean', src: asset('king-of-pop/final.jpg') },
       { label: 'Smooth Criminal', src: asset('king-of-pop/smooth-criminal.jpg') },
     ],
     description:
