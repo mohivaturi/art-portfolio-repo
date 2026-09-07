@@ -366,6 +366,17 @@ export const artworks: Artwork[] = [
     description:
       "A nod to Clint Eastwood and Sergio Leone's spaghetti westerns. My favourite is The Good, the Bad and the Ugly. Do watch it.",
   },
+  {
+    slug: 'heisenberg',
+    title: 'Heisenberg',
+    year: '2022',
+    medium: 'Digital',
+    style: 'stylised',
+    cover: asset('heisenberg/final.jpg'),
+    stages: [{ label: 'Final', src: asset('heisenberg/final.jpg') }],
+    description:
+      '“He is the danger.” Breaking Bad is still the best TV series I have watched to date. Every season earns the next one, and Walter’s slow turn from teacher to Heisenberg never gets old.',
+  },
 ]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
