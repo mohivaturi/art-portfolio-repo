@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Upload the gallery images (frontend/public/work/) to the site's S3 bucket.
-# They are git-ignored, so this is how they reach the deployed site.
+# Upload the site's media (frontend/public/work/ and frontend/public/about/)
+# to the S3 bucket. Those folders are git-ignored, so this is how they reach
+# the deployed site.
 #
 #   ./scripts/sync-artwork.sh dev     # default
 #   ./scripts/sync-artwork.sh prod
@@ -17,7 +18,6 @@ esac
 
 REGION="us-east-1"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-SRC="$ROOT/frontend/public/work/"
 
 get() { aws cloudformation describe-stacks --stack-name "$STACK" --region "$REGION" \
   --query "Stacks[0].Outputs[?OutputKey=='$1'].OutputValue" --output text; }
@@ -26,8 +26,13 @@ BUCKET="$(get BucketName)"
 DIST="$(get DistributionId)"
 echo "env=$ENV  bucket=$BUCKET"
 
-aws s3 sync "$SRC" "s3://$BUCKET/work/" --delete \
-  --cache-control "public, max-age=604800"
+for prefix in work about; do
+  src="$ROOT/frontend/public/$prefix/"
+  [ -d "$src" ] || continue
+  aws s3 sync "$src" "s3://$BUCKET/$prefix/" --delete \
+    --cache-control "public, max-age=604800"
+done
 
-aws cloudfront create-invalidation --distribution-id "$DIST" --paths "/work/*" >/dev/null
-echo "synced and invalidated /work/*"
+aws cloudfront create-invalidation --distribution-id "$DIST" \
+  --paths "/work/*" "/about/*" >/dev/null
+echo "synced and invalidated /work/* /about/*"

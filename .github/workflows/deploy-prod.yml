@@ -71,7 +71,7 @@ jobs:
 
       - name: Sync site to S3
         # gallery images under work/ are managed separately - never touch them here
-        run: aws s3 sync frontend/dist/ "s3://${{ steps.out.outputs.bucket }}/" --delete --exclude "work/*"
+        run: aws s3 sync frontend/dist/ "s3://${{ steps.out.outputs.bucket }}/" --delete --exclude "work/*" --exclude "about/*"
 
       - name: Invalidate CloudFront
         run: |

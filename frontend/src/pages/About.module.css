@@ -1,0 +1,86 @@
+.page {
+  flex: 1;
+  min-height: 100%;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 6vw, 4rem) 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 6vw, 4rem);
+}
+
+.photos {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+
+.old {
+  margin: 0;
+}
+
+.caption {
+  margin-top: 0.7rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-dim);
+}
+
+.body {
+  max-width: 52ch;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+.body p {
+  margin: 0 0 1.1rem;
+  text-align: justify;
+  hyphens: auto;
+}
+.body p:last-child {
+  margin-bottom: 0;
+}
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-shadow:
+    0 0 10px var(--accent-glow),
+    0 0 22px var(--accent-glow);
+}
+
+.name {
+  margin: 0 0 1.6rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+/* --- desktop: photos left, words right --- */
+@media (min-width: 860px) {
+  .page {
+    display: grid;
+    grid-template-columns: minmax(280px, 400px) 1fr;
+    align-items: start;
+    column-gap: clamp(3rem, 6vw, 6rem);
+  }
+
+  .body {
+    position: sticky;
+    top: clamp(3rem, 7vw, 6rem);
+  }
+}
