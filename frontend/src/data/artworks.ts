@@ -329,6 +329,21 @@ export const artworks: Artwork[] = [
     description:
       'Winter is coming, so she settled in by the fire. The beanie stayed on.',
   },
+  {
+    slug: 'goku',
+    title: 'Goku',
+    year: '2026',
+    medium: 'Digital',
+    style: 'stylised',
+    cover: asset('goku/final.jpg'),
+    stages: [
+      { label: 'Final', src: asset('goku/final.jpg') },
+      { label: 'Line art', src: asset('goku/line-art.jpg') },
+      { label: 'Pencil sketch', src: asset('goku/pencil.jpg') },
+    ],
+    description:
+      'Traced from an old pencil sketch of Goku, redrawn clean in Illustrator, then coloured.',
+  },
 ]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
