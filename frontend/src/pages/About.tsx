@@ -17,7 +17,7 @@ export default function About() {
         />
         <p className={styles.text}>
           From Hyderabad, India, now writing software somewhere in the US. Pretty
-          much self-taught.
+          much self-taught, part-time artist.
         </p>
       </div>
 
