@@ -375,7 +375,7 @@ export const artworks: Artwork[] = [
     cover: asset('heisenberg/final.jpg'),
     stages: [{ label: 'Final', src: asset('heisenberg/final.jpg') }],
     description:
-      '“He is the danger.” Breaking Bad is still the best TV series I have watched to date. Every season earns the next one, and Walter’s slow turn from teacher to Heisenberg never gets old.',
+      '“He is the danger.” Breaking Bad is still the best TV series I have watched to date.',
   },
 ]
 
