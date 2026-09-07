@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import type { MouseEvent, ReactNode } from 'react'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { bySlug, byStyle, descriptionOf } from '../data/artworks'
 import styles from './Work.module.css'
 
@@ -16,7 +16,18 @@ function emphasise(text: string): ReactNode[] {
 
 export default function Work() {
   const { slug = '' } = useParams()
+  const navigate = useNavigate()
+  const location = useLocation()
   const art = bySlug(slug)
+
+  // if we arrived from within the app, go back so the gallery keeps its
+  // scroll position; on a cold load (shared link) let the <Link> navigate
+  const backToGallery = (e: MouseEvent) => {
+    if (location.key !== 'default') {
+      e.preventDefault()
+      navigate(-1)
+    }
+  }
 
   if (!art) {
     return (
@@ -39,7 +50,11 @@ export default function Work() {
   return (
     <article className={styles.page}>
       <aside className={styles.aside}>
-        <Link to={collectionPath} className={styles.back}>
+        <Link
+          to={collectionPath}
+          className={styles.back}
+          onClick={backToGallery}
+        >
           &larr; Gallery
         </Link>
 
@@ -77,7 +92,9 @@ export default function Work() {
 
         <nav className={styles.pager}>
           {prev ? (
-            <Link to={`/work/${prev.slug}`} className={styles.pagerLink}>
+            // replace: flipping through pieces shouldn't stack history, so
+            // "Gallery" / browser-back still lands on the gallery
+            <Link to={`/work/${prev.slug}`} replace className={styles.pagerLink}>
               &larr; {prev.title}
             </Link>
           ) : (
@@ -86,6 +103,7 @@ export default function Work() {
           {next ? (
             <Link
               to={`/work/${next.slug}`}
+              replace
               className={`${styles.pagerLink} ${styles.pagerNext}`}
             >
               {next.title} &rarr;
