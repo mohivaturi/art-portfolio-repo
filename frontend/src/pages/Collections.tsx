@@ -5,17 +5,36 @@ import {
   toolLabel,
   toolOf,
   type Artwork,
+  type Style,
   type Tool,
 } from '../data/artworks'
 import styles from './Collections.module.css'
 
-type Props = { variant?: 'sacred' | 'stylised' }
+type Props = { variant?: Style }
 
 // newest tool first, oldest last
 const TOOL_ORDER: Tool[] = ['photoshop', 'paintnet', 'mspaint']
 
+const HEADING: Record<Style, { title: string; medium: string; hint: string }> = {
+  sacred: {
+    title: 'Sacred',
+    medium: 'Digital',
+    hint: 'Click any piece to see how it came together',
+  },
+  stylised: {
+    title: 'Stylised',
+    medium: 'Digital',
+    hint: 'Click any piece to see how it came together',
+  },
+  traditional: {
+    title: 'Traditional Portraits',
+    medium: 'Pencil',
+    hint: 'Click any piece for a closer look',
+  },
+}
+
 export default function Collections({ variant = 'sacred' }: Props) {
-  const stylised = variant === 'stylised'
+  const heading = HEADING[variant]
   const items = byStyle(variant)
 
   const groups = TOOL_ORDER.map((tool) => ({
@@ -29,10 +48,10 @@ export default function Collections({ variant = 'sacred' }: Props) {
     <section className={styles.page}>
       <header className={styles.head}>
         <div className={styles.heading}>
-          <h1 className={styles.eyebrow}>{stylised ? 'Stylised' : 'Sacred'}</h1>
-          <p className={styles.medium}>Digital</p>
+          <h1 className={styles.eyebrow}>{heading.title}</h1>
+          <p className={styles.medium}>{heading.medium}</p>
         </div>
-        <p className={styles.hint}>Click any piece to see how it came together</p>
+        <p className={styles.hint}>{heading.hint}</p>
       </header>
 
       {items.length === 0 ? (

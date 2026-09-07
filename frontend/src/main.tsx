@@ -16,6 +16,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: 'collections', element: <Collections variant="sacred" /> },
       { path: 'collections/stylised', element: <Collections variant="stylised" /> },
+      { path: 'traditional', element: <Collections variant="traditional" /> },
       { path: 'work/:slug', element: <Work /> },
       { path: 'about', element: <About /> },
       { path: '*', element: <Navigate to="/" replace /> },

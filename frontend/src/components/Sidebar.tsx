@@ -4,6 +4,7 @@ import styles from './Sidebar.module.css'
 const links = [
   { to: '/', label: 'Home', end: true },
   { to: '/collections', label: 'Collections' },
+  { to: '/traditional', label: 'Traditional' },
   { to: '/about', label: 'About' },
 ]
 

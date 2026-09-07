@@ -10,7 +10,7 @@
  * grouped by tool (Photoshop, then Paint.NET, then MS Paint).
  */
 
-export type Style = 'sacred' | 'stylised'
+export type Style = 'sacred' | 'stylised' | 'traditional'
 
 export type Stage = {
   label: string

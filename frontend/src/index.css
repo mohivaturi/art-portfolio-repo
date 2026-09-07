@@ -43,6 +43,12 @@
   --accent-ink: #1c0419;
   --accent-glow: rgba(242, 79, 218, 0.42);
 }
+/* traditional = warm graphite, for the pencil work */
+[data-style='traditional'] {
+  --accent: #d8b98a;
+  --accent-ink: #211a11;
+  --accent-glow: rgba(216, 185, 138, 0.34);
+}
 
 *,
 *::before,
