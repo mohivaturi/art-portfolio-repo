@@ -342,7 +342,7 @@ export const artworks: Artwork[] = [
       { label: 'Pencil sketch', src: asset('goku/pencil.jpg') },
     ],
     description:
-      'Traced from an old pencil sketch of Goku, redrawn clean in Illustrator, then coloured.',
+      'Traced from an old pencil sketch of Goku, redrawn clean in Illustrator, then coloured. Dragon Ball Z was never just an anime to me; it is closer to a guide for living, always about getting better.',
   },
 ]
 
