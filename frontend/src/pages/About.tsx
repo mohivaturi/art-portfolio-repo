@@ -29,6 +29,7 @@ export default function About() {
           puts a kind of quiet in me, and the more hectic life gets, the more I
           seem to need it to stay sane.
         </p>
+        <p>I hope you liked my work.</p>
       </div>
 
       <img
