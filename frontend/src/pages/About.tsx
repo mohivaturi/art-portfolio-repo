@@ -15,8 +15,8 @@ export default function About() {
         <h1 className={styles.name}>Mohith Ivaturi</h1>
 
         <p>
-          Hi. I&rsquo;m from Hyderabad, India, and I work as a software developer
-          in the US. Self-taught at most things, this one included.
+          Hyderabad kid, now writing software somewhere in the US. Nobody taught
+          me any of it, this least of all.
         </p>
         <p>
           The drawing started with my Thata. He would bring home chalk and the
