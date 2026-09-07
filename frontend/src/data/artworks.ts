@@ -302,7 +302,7 @@ export const artworks: Artwork[] = [
   {
     slug: 'sunny-day',
     title: 'Sunny Day',
-    year: '2026',
+    year: '2022',
     medium: 'Digital',
     style: 'stylised',
     cover: asset('sunny-day/final.jpg'),
@@ -317,7 +317,7 @@ export const artworks: Artwork[] = [
   {
     slug: 'winter-is-coming',
     title: 'Winter is Coming',
-    year: '2026',
+    year: '2022',
     medium: 'Digital',
     style: 'stylised',
     cover: asset('winter-is-coming/final.jpg'),
@@ -332,7 +332,7 @@ export const artworks: Artwork[] = [
   {
     slug: 'goku',
     title: 'Goku',
-    year: '2026',
+    year: '2022',
     medium: 'Digital',
     style: 'stylised',
     cover: asset('goku/final.jpg'),
