@@ -402,6 +402,17 @@ export const artworks: Artwork[] = [
     description:
       'I only got into his music after he was gone. Still groove to it every time. One of my early MS Paint pieces.',
   },
+  {
+    slug: 'lion-king',
+    title: 'Lion King',
+    year: 'late 2000s',
+    medium: 'MS Paint',
+    style: 'stylised',
+    cover: asset('lion-king/final.jpg'),
+    stages: [{ label: 'Final', src: asset('lion-king/final.jpg') }],
+    description:
+      'One of my favourite movies of all time, and one of my favourite scenes: where Simba realises who he actually is. Late MS Paint work.',
+  },
 ]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
