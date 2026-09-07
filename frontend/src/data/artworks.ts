@@ -391,8 +391,8 @@ export const artworks: Artwork[] = [
   {
     slug: 'king-of-pop',
     title: 'King of Pop',
-    year: '2022',
-    medium: 'Digital',
+    year: 'late 2000s',
+    medium: 'MS Paint',
     style: 'stylised',
     cover: asset('king-of-pop/final.jpg'),
     stages: [
