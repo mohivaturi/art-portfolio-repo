@@ -377,6 +377,17 @@ export const artworks: Artwork[] = [
     description:
       '“He is the danger.” Breaking Bad is still the best TV series I have watched to date.',
   },
+  {
+    slug: 'n-t-rama-rao',
+    title: 'N T Rama Rao',
+    year: '2022',
+    medium: 'Digital',
+    style: 'stylised',
+    cover: asset('n-t-rama-rao/final.jpg'),
+    stages: [{ label: 'Final', src: asset('n-t-rama-rao/final.jpg') }],
+    description:
+      'A tribute to one of the greatest actors of all time. He pulled off Lord Krishna effortlessly. Mayabazar is still my all-time favourite.',
+  },
 ]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
