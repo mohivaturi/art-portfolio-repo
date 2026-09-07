@@ -22,7 +22,7 @@ export default function About() {
           The drawing started with my Thata. He would bring home chalk and the
           two of us would sit and draw together on a little board. He planted the
           whole idea in me, so a big shoutout to him for that. I&rsquo;m sure he
-          would love this work.
+          would love my work.
         </p>
         <p>
           Somewhere along the way it became the thing that keeps me steady. It
