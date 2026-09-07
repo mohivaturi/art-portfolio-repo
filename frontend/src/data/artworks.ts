@@ -344,6 +344,16 @@ export const artworks: Artwork[] = [
     description:
       'Traced from an old pencil sketch of Goku, redrawn clean in Illustrator, then coloured. Dragon Ball Z was never just an anime to me; it is closer to a guide for living, always about getting better.',
   },
+  {
+    slug: 'fall',
+    title: 'Fall',
+    year: '2022',
+    medium: 'Digital',
+    style: 'stylised',
+    cover: asset('fall/final.jpg'),
+    stages: [{ label: 'Final', src: asset('fall/final.jpg') }],
+    description: 'I’ll fall for you. Lost the line art for this one, unfortunately.',
+  },
 ]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
