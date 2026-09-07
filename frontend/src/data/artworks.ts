@@ -352,7 +352,8 @@ export const artworks: Artwork[] = [
     style: 'stylised',
     cover: asset('fall/final.jpg'),
     stages: [{ label: 'Final', src: asset('fall/final.jpg') }],
-    description: 'I’ll fall for you. Lost the line art for this one, unfortunately.',
+    description:
+      '“I’ll fall for you.” Not a bad pick-up line, is it? Lost the line art for this one, unfortunately.',
   },
 ]
 
