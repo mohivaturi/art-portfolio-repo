@@ -12,12 +12,23 @@ from dataclasses import dataclass
 class EnvConfig:
     name: str  # "dev" | "prod"
     prefix: str  # resource-name prefix, e.g. "dev-portfolio"
-    # domain_name is wired up later (ARCHITECTURE.md step 8)
+    # apex custom domain (ARCHITECTURE.md step 8). The custom domain is wired
+    # up only once BOTH domain_name and hosted_zone_id are set - fill in the
+    # zone id after registering the domain / creating the Route 53 zone
+    # (`aws route53 list-hosted-zones-by-name --dns-name mohithivaturi.art`).
+    # When active the stack also serves www.<domain_name>. dev keeps the raw
+    # CloudFront URL.
     domain_name: str | None = None
+    hosted_zone_id: str | None = None
 
 
 DEV = EnvConfig(name="dev", prefix="dev-portfolio")
-PROD = EnvConfig(name="prod", prefix="prod-portfolio")
+PROD = EnvConfig(
+    name="prod",
+    prefix="prod-portfolio",
+    domain_name="mohithivaturi.art",
+    hosted_zone_id=None,  # TODO: set after the Route 53 zone exists
+)
 
 ENVIRONMENTS: dict[str, EnvConfig] = {
     "dev": DEV,
