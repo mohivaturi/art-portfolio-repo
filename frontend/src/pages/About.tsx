@@ -16,7 +16,7 @@ export default function About() {
 
         <p>
           Hyderabad kid, now writing software somewhere in the US. Pretty much
-          self-taught, this included.
+          self-taught.
         </p>
         <p>
           The drawing started with my Thata. He would bring home chalk and the
