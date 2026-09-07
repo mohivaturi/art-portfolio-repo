@@ -413,6 +413,18 @@ export const artworks: Artwork[] = [
     description:
       '“I’ll fall for you.” Not a bad pick-up line, is it? Lost the line art for this one, unfortunately.',
   },
+  {
+    slug: 'sachin-sachin',
+    title: 'Sachin Sachin',
+    subtitle: 'A straight drive, straighter than a line.',
+    year: '2011',
+    medium: 'MS Paint',
+    style: 'stylised',
+    cover: asset('sachin-sachin/final.jpg'),
+    stages: [{ label: 'Final', src: asset('sachin-sachin/final.jpg') }],
+    description:
+      'The 2011 World Cup win was the best tribute we could give him. Twenty-two years in the making, and it finally came home.',
+  },
 ]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
