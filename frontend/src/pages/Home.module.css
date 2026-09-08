@@ -211,20 +211,45 @@
 }
 
 @media (max-width: 768px) {
+  /* video becomes a framed banner up top; the card sits below on solid bg */
   .hero {
-    min-height: 0;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: stretch;
-    padding: 2.5rem 1rem 2rem;
+    display: block;
+    min-height: 100dvh;
+    padding: 0 1.1rem 2.5rem;
+  }
+  .bg {
+    bottom: auto;
+    height: 50vh;
+  }
+  .bgSacred {
+    /* keep the deity's face and torso in frame */
+    object-position: 50% 20%;
+  }
+  .bgStylised {
+    /* keep the figure in frame */
+    object-position: 70% 30%;
+  }
+  .scrim {
+    bottom: auto;
+    height: 50vh;
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 10, 9, 0) 58%,
+      var(--bg) 100%
+    );
   }
   .card {
     width: 100%;
     min-width: 0;
-    max-width: 100%;
+    max-width: 26rem;
+    margin: calc(50vh + 1.4rem) auto 0;
     gap: 0.9rem;
-    padding: 1.6rem 1.4rem 1.85rem;
-    border-radius: 18px;
+    padding: 1.5rem 1.3rem 1.7rem;
+    background: var(--bg-raise);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-color: var(--line);
+    box-shadow: none;
   }
   .signature {
     width: min(58vw, 12rem);

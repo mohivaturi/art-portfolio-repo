@@ -106,9 +106,17 @@
     column-count: 2;
   }
 }
+/* keep two across on phones - a grid of thumbnails, not a single stack */
 @media (max-width: 560px) {
   .grid {
-    column-count: 1;
+    column-gap: 0.7rem;
+  }
+  .tile {
+    margin-bottom: 0.7rem;
+  }
+  .tileMeta {
+    margin-top: 0.45rem;
+    font-size: 0.68rem;
   }
 }
 
