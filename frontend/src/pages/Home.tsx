@@ -28,9 +28,11 @@ function useIsMobile() {
 /**
  * Background video. iOS Safari is fussy: `muted` must be a real DOM property
  * (React does not always set it from the attribute) and set BEFORE the browser
- * runs its autoplay check, so we do it in the ref callback. We also nudge
- * play() on mount, when the media is ready, and on the first user gesture.
+ * runs its autoplay check, so we do it in the callback ref. We also nudge
+ * play() on mount, when the media is ready, and on any early user gesture.
  */
+const GESTURES = ['touchstart', 'touchend', 'pointerdown', 'click', 'scroll']
+
 function BgVideo({
   className,
   src,
@@ -40,7 +42,10 @@ function BgVideo({
   src: string
   poster: string
 }) {
-  const setNode = (v: HTMLVideoElement | null) => {
+  const ref = useRef<HTMLVideoElement | null>(null)
+
+  const attach = (v: HTMLVideoElement | null) => {
+    ref.current = v
     if (!v) return
     // synchronous, during commit - ahead of the autoplay policy check
     v.muted = true
@@ -49,10 +54,11 @@ function BgVideo({
     v.playsInline = true
     v.setAttribute('playsinline', '')
     v.setAttribute('webkit-playsinline', 'true')
+    v.play().catch(() => {})
   }
 
   useEffect(() => {
-    const v = document.querySelector<HTMLVideoElement>(`video[data-bg="${src}"]`)
+    const v = ref.current
     if (!v) return
     const play = () => {
       v.muted = true
@@ -61,28 +67,21 @@ function BgVideo({
     play()
     v.addEventListener('canplay', play)
     v.addEventListener('loadeddata', play)
-    const gesture = () => {
-      play()
-      window.removeEventListener('pointerdown', gesture)
-      window.removeEventListener('touchend', gesture)
-      window.removeEventListener('scroll', gesture)
+    v.addEventListener('loadedmetadata', play)
+    for (const e of GESTURES) {
+      window.addEventListener(e, play, { passive: true })
     }
-    window.addEventListener('pointerdown', gesture, { passive: true })
-    window.addEventListener('touchend', gesture, { passive: true })
-    window.addEventListener('scroll', gesture, { passive: true })
     return () => {
       v.removeEventListener('canplay', play)
       v.removeEventListener('loadeddata', play)
-      window.removeEventListener('pointerdown', gesture)
-      window.removeEventListener('touchend', gesture)
-      window.removeEventListener('scroll', gesture)
+      v.removeEventListener('loadedmetadata', play)
+      for (const e of GESTURES) window.removeEventListener(e, play)
     }
   }, [src])
 
   return (
     <video
-      ref={setNode}
-      data-bg={src}
+      ref={attach}
       className={className}
       src={src}
       poster={poster}
@@ -91,7 +90,6 @@ function BgVideo({
       loop
       playsInline
       preload="auto"
-      disablePictureInPicture
       aria-hidden="true"
     />
   )
