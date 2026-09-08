@@ -89,7 +89,7 @@ function Tile({ art }: { art: Artwork }) {
       />
       <span className={styles.tileMeta}>
         <span className={styles.tileTitle}>{art.title}</span>
-        <span className={styles.tileYear}>{art.year}</span>
+        {art.year && <span className={styles.tileYear}>{art.year}</span>}
       </span>
     </Link>
   )

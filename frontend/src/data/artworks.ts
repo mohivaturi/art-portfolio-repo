@@ -28,7 +28,7 @@ export type Artwork = {
   subtitle?: string
   /** an epigraph shown in italic above the description */
   quote?: string
-  year: string
+  year?: string
   medium: string
   style: Style
   /** defaults to 'photoshop' when omitted */
@@ -438,11 +438,10 @@ export const artworks: Artwork[] = [
       'The 2011 World Cup win was the best tribute we could give him. Twenty-two years in the making, and it finally came home.',
   },
 
-  // ===== Traditional (pencil, school years) =====
+  // ===== Traditional (pencil) =====
   {
     slug: 'sketch-ganesha',
     title: 'Ganesha',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-ganesha/final.jpg'),
@@ -450,8 +449,7 @@ export const artworks: Artwork[] = [
   },
   {
     slug: 'sketch-ink-mashup',
-    title: 'Ink Mashup',
-    year: 'school years',
+    title: 'Durga',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-ink-mashup/final.jpg'),
@@ -460,7 +458,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-thor',
     title: 'Thor',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-thor/final.jpg'),
@@ -469,7 +466,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-wolverine',
     title: 'Wolverine',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-wolverine/final.jpg'),
@@ -478,7 +474,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-joker',
     title: 'Joker',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-joker/final.jpg'),
@@ -487,7 +482,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-harley-quinn',
     title: 'Harley Quinn',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-harley-quinn/final.jpg'),
@@ -496,7 +490,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-justice-league',
     title: 'Justice League',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-justice-league/final.jpg'),
@@ -504,8 +497,7 @@ export const artworks: Artwork[] = [
   },
   {
     slug: 'sketch-figure-studies',
-    title: 'Figure Studies',
-    year: 'school years',
+    title: 'F.R.I.E.N.D.S',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-figure-studies/final.jpg'),
@@ -514,7 +506,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-wonder-woman',
     title: 'Wonder Woman',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-wonder-woman/final.jpg'),
@@ -523,7 +514,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-spider-man-3',
     title: 'Spider-Man 3',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-spider-man-3/final.jpg'),
@@ -532,7 +522,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-hanuman',
     title: 'Hanuman',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-hanuman/final.jpg'),
@@ -541,7 +530,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-veera-hanuman',
     title: 'Veera Hanuman',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-veera-hanuman/final.jpg'),
@@ -550,7 +538,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-gabbar-singh',
     title: 'Gabbar Singh',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-gabbar-singh/final.jpg'),
@@ -559,7 +546,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-ganesha-standing',
     title: 'Ganesha',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-ganesha-standing/final.jpg'),
@@ -568,7 +554,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-mahadev',
     title: 'Mahadev',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-mahadev/final.jpg'),
@@ -576,8 +561,7 @@ export const artworks: Artwork[] = [
   },
   {
     slug: 'sketch-the-king',
-    title: 'The King',
-    year: 'school years',
+    title: 'Krishna',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-the-king/final.jpg'),
@@ -586,7 +570,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-panchamukha-ganapati',
     title: 'Panchamukha Ganapati',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-panchamukha-ganapati/final.jpg'),
@@ -595,7 +578,6 @@ export const artworks: Artwork[] = [
   {
     slug: 'sketch-hanuman-leaping',
     title: 'Hanuman',
-    year: 'school years',
     medium: 'Pencil',
     style: 'traditional',
     cover: asset('sketch-hanuman-leaping/final.jpg'),

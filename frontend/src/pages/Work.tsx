@@ -62,7 +62,7 @@ export default function Work() {
           <h1 className={styles.title}>{art.title}</h1>
           {art.subtitle && <p className={styles.subtitle}>{art.subtitle}</p>}
           <p className={styles.meta}>
-            {art.year} &middot; {art.medium}
+            {art.year ? `${art.year} · ${art.medium}` : art.medium}
           </p>
           {art.quote && <p className={styles.quote}>{art.quote}</p>}
           <p className={styles.description}>{emphasise(descriptionOf(art))}</p>
