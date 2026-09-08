@@ -30,11 +30,7 @@ function BgVideo({
     if (!v) return
     v.muted = true
     v.defaultMuted = true
-    const tryPlay = () => v.play().catch(() => {})
-    tryPlay()
-    // retry once the tab/app becomes visible (iOS pauses autoplay in the bg)
-    document.addEventListener('visibilitychange', tryPlay)
-    return () => document.removeEventListener('visibilitychange', tryPlay)
+    v.play().catch(() => {})
   }, [])
   return (
     <video
@@ -59,6 +55,32 @@ export default function Home() {
   const stylised = params.get('style') === 'stylised'
   const mode = stylised ? 'stylised' : 'sacred'
   const restored = useRef(false)
+  const heroRef = useRef<HTMLElement>(null)
+
+  // If the OS/browser blocks autoplay (Low Power Mode, data saver, an
+  // auto-play setting turned off), the first tap/scroll on the hero counts
+  // as a user gesture - use it to start the background video.
+  useEffect(() => {
+    const hero = heroRef.current
+    if (!hero) return
+    const kick = () => {
+      hero.querySelectorAll('video').forEach((v) => {
+        v.muted = true
+        v.play().catch(() => {})
+      })
+    }
+    const opts = { passive: true } as const
+    hero.addEventListener('pointerdown', kick, opts)
+    window.addEventListener('scroll', kick, opts)
+    window.addEventListener('touchstart', kick, opts)
+    const done = () => {
+      hero.removeEventListener('pointerdown', kick)
+      window.removeEventListener('scroll', kick)
+      window.removeEventListener('touchstart', kick)
+    }
+    // give autoplay a moment; then rely on the gesture listeners
+    return done
+  }, [])
 
   useEffect(() => {
     // First render only: if the URL made no explicit choice, restore the
@@ -89,7 +111,7 @@ export default function Home() {
   }
 
   return (
-    <section className={styles.hero} data-mode={mode}>
+    <section ref={heroRef} className={styles.hero} data-mode={mode}>
       <BgVideo
         className={`${styles.bg} ${styles.bgSacred}`}
         src={bgVideo}
