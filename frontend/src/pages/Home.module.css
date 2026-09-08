@@ -226,7 +226,9 @@
     object-position: 50% 20%;
   }
   .bgStylised {
-    /* keep the figure in frame */
+    /* keep the figure in frame; only one video is mounted on mobile so it is
+       always the visible one */
+    opacity: 1;
     object-position: 70% 30%;
   }
   .scrim {

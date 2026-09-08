@@ -26,11 +26,10 @@ function useIsMobile() {
 }
 
 /**
- * Desktop background video. React does not reliably set the `muted` DOM
- * property from the JSX attribute, and browsers refuse to autoplay a video
- * that is not muted as a property - so we set it (and kick off play) via a ref.
- * On phones we skip the video entirely (autoplay is unreliable there and it is
- * a 4 MB download) and show the poster still instead - see Home().
+ * Background video. iOS Safari is fussy: `muted` must be a real DOM property
+ * (React does not always set it from the attribute) and set BEFORE the browser
+ * runs its autoplay check, so we do it in the ref callback. We also nudge
+ * play() on mount, when the media is ready, and on the first user gesture.
  */
 function BgVideo({
   className,
@@ -41,17 +40,49 @@ function BgVideo({
   src: string
   poster: string
 }) {
-  const ref = useRef<HTMLVideoElement>(null)
-  useEffect(() => {
-    const v = ref.current
+  const setNode = (v: HTMLVideoElement | null) => {
     if (!v) return
+    // synchronous, during commit - ahead of the autoplay policy check
     v.muted = true
     v.defaultMuted = true
-    v.play().catch(() => {})
-  }, [])
+    v.setAttribute('muted', '')
+    v.playsInline = true
+    v.setAttribute('playsinline', '')
+    v.setAttribute('webkit-playsinline', 'true')
+  }
+
+  useEffect(() => {
+    const v = document.querySelector<HTMLVideoElement>(`video[data-bg="${src}"]`)
+    if (!v) return
+    const play = () => {
+      v.muted = true
+      v.play().catch(() => {})
+    }
+    play()
+    v.addEventListener('canplay', play)
+    v.addEventListener('loadeddata', play)
+    const gesture = () => {
+      play()
+      window.removeEventListener('pointerdown', gesture)
+      window.removeEventListener('touchend', gesture)
+      window.removeEventListener('scroll', gesture)
+    }
+    window.addEventListener('pointerdown', gesture, { passive: true })
+    window.addEventListener('touchend', gesture, { passive: true })
+    window.addEventListener('scroll', gesture, { passive: true })
+    return () => {
+      v.removeEventListener('canplay', play)
+      v.removeEventListener('loadeddata', play)
+      window.removeEventListener('pointerdown', gesture)
+      window.removeEventListener('touchend', gesture)
+      window.removeEventListener('scroll', gesture)
+    }
+  }, [src])
+
   return (
     <video
-      ref={ref}
+      ref={setNode}
+      data-bg={src}
       className={className}
       src={src}
       poster={poster}
@@ -104,20 +135,16 @@ export default function Home() {
   return (
     <section className={styles.hero} data-mode={mode}>
       {isMobile ? (
-        <>
-          <img
-            className={`${styles.bg} ${styles.bgSacred}`}
-            src={bgPoster}
-            alt=""
-            aria-hidden="true"
-          />
-          <img
-            className={`${styles.bg} ${styles.bgStylised}`}
-            src={bgPosterStylised}
-            alt=""
-            aria-hidden="true"
-          />
-        </>
+        /* one video at a time on phones - lighter, and avoids two <video>s
+           fighting over playback on iOS */
+        <BgVideo
+          key={mode}
+          className={`${styles.bg} ${
+            stylised ? styles.bgStylised : styles.bgSacred
+          }`}
+          src={stylised ? bgVideoStylised : bgVideo}
+          poster={stylised ? bgPosterStylised : bgPoster}
+        />
       ) : (
         <>
           <BgVideo
