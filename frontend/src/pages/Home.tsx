@@ -10,6 +10,50 @@ import styles from './Home.module.css'
 
 const STORE_KEY = 'gallery-style'
 
+/**
+ * Background video. React does not reliably set the `muted` DOM property from
+ * the JSX attribute, and mobile browsers refuse to autoplay a video that is
+ * not muted as a property - so we set it (and kick off play) via a ref.
+ */
+function BgVideo({
+  className,
+  src,
+  poster,
+}: {
+  className: string
+  src: string
+  poster: string
+}) {
+  const ref = useRef<HTMLVideoElement>(null)
+  useEffect(() => {
+    const v = ref.current
+    if (!v) return
+    v.muted = true
+    v.defaultMuted = true
+    const tryPlay = () => v.play().catch(() => {})
+    tryPlay()
+    // retry once the tab/app becomes visible (iOS pauses autoplay in the bg)
+    document.addEventListener('visibilitychange', tryPlay)
+    return () => document.removeEventListener('visibilitychange', tryPlay)
+  }, [])
+  return (
+    <video
+      ref={ref}
+      className={className}
+      poster={poster}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      disablePictureInPicture
+      aria-hidden="true"
+    >
+      <source src={src} type="video/mp4" />
+    </video>
+  )
+}
+
 export default function Home() {
   const [params, setParams] = useSearchParams()
   const stylised = params.get('style') === 'stylised'
@@ -46,27 +90,15 @@ export default function Home() {
 
   return (
     <section className={styles.hero} data-mode={mode}>
-      <video
+      <BgVideo
         className={`${styles.bg} ${styles.bgSacred}`}
         src={bgVideo}
         poster={bgPoster}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
       />
-      <video
+      <BgVideo
         className={`${styles.bg} ${styles.bgStylised}`}
         src={bgVideoStylised}
         poster={bgPosterStylised}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
       />
       <span className={styles.scrim} aria-hidden="true" />
 
