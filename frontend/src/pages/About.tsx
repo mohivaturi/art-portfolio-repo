@@ -25,12 +25,12 @@ export default function About() {
         <img
           className={styles.photo}
           src="/about/tata-mama.jpg"
-          alt="A younger Mohith drawing on a board with his Thata"
+          alt="A younger Mohith drawing on a board with his Thatha"
           loading="lazy"
         />
         <div className={styles.text}>
           <p>
-            The drawing started with my Thata. He would bring home chalk and the
+            The drawing started with my Thatha. He would bring home chalk and the
             two of us would sit and draw together on a little board. He planted
             the whole idea in me, so a big shoutout to him for that. I&rsquo;m
             sure he would love my work.
