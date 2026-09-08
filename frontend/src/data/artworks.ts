@@ -583,6 +583,22 @@ export const artworks: Artwork[] = [
     cover: asset('sketch-hanuman-leaping/final.jpg'),
     stages: [{ label: 'Final', src: asset('sketch-hanuman-leaping/final.jpg') }],
   },
+  {
+    slug: 'sketch-ganesha-puja',
+    title: 'Ganesha Puja',
+    medium: 'Pencil',
+    style: 'traditional',
+    cover: asset('sketch-ganesha-puja/final.jpg'),
+    stages: [{ label: 'Final', src: asset('sketch-ganesha-puja/final.jpg') }],
+  },
+  {
+    slug: 'sketch-ganesha-bust',
+    title: 'Ganesha',
+    medium: 'Pencil',
+    style: 'traditional',
+    cover: asset('sketch-ganesha-bust/final.jpg'),
+    stages: [{ label: 'Final', src: asset('sketch-ganesha-bust/final.jpg') }],
+  },
 ]
 
 export const bySlug = (slug: string) => artworks.find((a) => a.slug === slug)
