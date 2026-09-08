@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import bgVideo from '../assets/mahadev-bg.mp4'
 import bgPoster from '../assets/mahadev-bg-poster.jpg'
@@ -9,11 +9,28 @@ import signatureStylised from '../assets/signature-stylised.png'
 import styles from './Home.module.css'
 
 const STORE_KEY = 'gallery-style'
+const MOBILE_Q = '(max-width: 768px)'
+
+/** true on phone-width screens (kept in sync on resize / rotate) */
+function useIsMobile() {
+  const [mobile, setMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(MOBILE_Q).matches,
+  )
+  useEffect(() => {
+    const mq = window.matchMedia(MOBILE_Q)
+    const on = () => setMobile(mq.matches)
+    mq.addEventListener('change', on)
+    return () => mq.removeEventListener('change', on)
+  }, [])
+  return mobile
+}
 
 /**
- * Background video. React does not reliably set the `muted` DOM property from
- * the JSX attribute, and mobile browsers refuse to autoplay a video that is
- * not muted as a property - so we set it (and kick off play) via a ref.
+ * Desktop background video. React does not reliably set the `muted` DOM
+ * property from the JSX attribute, and browsers refuse to autoplay a video
+ * that is not muted as a property - so we set it (and kick off play) via a ref.
+ * On phones we skip the video entirely (autoplay is unreliable there and it is
+ * a 4 MB download) and show the poster still instead - see Home().
  */
 function BgVideo({
   className,
@@ -36,6 +53,7 @@ function BgVideo({
     <video
       ref={ref}
       className={className}
+      src={src}
       poster={poster}
       autoPlay
       muted
@@ -44,9 +62,7 @@ function BgVideo({
       preload="auto"
       disablePictureInPicture
       aria-hidden="true"
-    >
-      <source src={src} type="video/mp4" />
-    </video>
+    />
   )
 }
 
@@ -55,32 +71,7 @@ export default function Home() {
   const stylised = params.get('style') === 'stylised'
   const mode = stylised ? 'stylised' : 'sacred'
   const restored = useRef(false)
-  const heroRef = useRef<HTMLElement>(null)
-
-  // If the OS/browser blocks autoplay (Low Power Mode, data saver, an
-  // auto-play setting turned off), the first tap/scroll on the hero counts
-  // as a user gesture - use it to start the background video.
-  useEffect(() => {
-    const hero = heroRef.current
-    if (!hero) return
-    const kick = () => {
-      hero.querySelectorAll('video').forEach((v) => {
-        v.muted = true
-        v.play().catch(() => {})
-      })
-    }
-    const opts = { passive: true } as const
-    hero.addEventListener('pointerdown', kick, opts)
-    window.addEventListener('scroll', kick, opts)
-    window.addEventListener('touchstart', kick, opts)
-    const done = () => {
-      hero.removeEventListener('pointerdown', kick)
-      window.removeEventListener('scroll', kick)
-      window.removeEventListener('touchstart', kick)
-    }
-    // give autoplay a moment; then rely on the gesture listeners
-    return done
-  }, [])
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     // First render only: if the URL made no explicit choice, restore the
@@ -111,17 +102,36 @@ export default function Home() {
   }
 
   return (
-    <section ref={heroRef} className={styles.hero} data-mode={mode}>
-      <BgVideo
-        className={`${styles.bg} ${styles.bgSacred}`}
-        src={bgVideo}
-        poster={bgPoster}
-      />
-      <BgVideo
-        className={`${styles.bg} ${styles.bgStylised}`}
-        src={bgVideoStylised}
-        poster={bgPosterStylised}
-      />
+    <section className={styles.hero} data-mode={mode}>
+      {isMobile ? (
+        <>
+          <img
+            className={`${styles.bg} ${styles.bgSacred}`}
+            src={bgPoster}
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            className={`${styles.bg} ${styles.bgStylised}`}
+            src={bgPosterStylised}
+            alt=""
+            aria-hidden="true"
+          />
+        </>
+      ) : (
+        <>
+          <BgVideo
+            className={`${styles.bg} ${styles.bgSacred}`}
+            src={bgVideo}
+            poster={bgPoster}
+          />
+          <BgVideo
+            className={`${styles.bg} ${styles.bgStylised}`}
+            src={bgVideoStylised}
+            poster={bgPosterStylised}
+          />
+        </>
+      )}
       <span className={styles.scrim} aria-hidden="true" />
 
       <div className={styles.card}>
