@@ -43,11 +43,17 @@
   --accent-ink: #1c0419;
   --accent-glow: rgba(242, 79, 218, 0.42);
 }
-/* traditional = warm graphite, for the pencil work */
+/* traditional = glowing red, for the pencil work */
 [data-style='traditional'] {
-  --accent: #d8b98a;
-  --accent-ink: #211a11;
-  --accent-glow: rgba(216, 185, 138, 0.34);
+  --accent: #ff3b30;
+  --accent-ink: #200302;
+  --accent-glow: rgba(255, 59, 48, 0.42);
+}
+/* about = glowing yellow */
+[data-style='about'] {
+  --accent: #ffd23f;
+  --accent-ink: #1e1803;
+  --accent-glow: rgba(255, 210, 63, 0.4);
 }
 
 *,
