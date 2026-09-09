@@ -17,6 +17,20 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
+  pointer-events: none;
+}
+
+/* iOS drops a big native play button over any inline video it decides not to
+   autoplay (Low Power Mode blocks autoplay at the OS level, and in-app
+   browsers are stricter still). Hide it so the poster frame is a clean
+   fallback - a tap anywhere on the page still starts playback. */
+.bg::-webkit-media-controls,
+.bg::-webkit-media-controls-start-playback-button,
+.bg::-webkit-media-controls-overlay-play-button,
+.bg::-webkit-media-controls-panel {
+  display: none !important;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 /* Sacred video sits underneath at full opacity always; the Stylised layer
