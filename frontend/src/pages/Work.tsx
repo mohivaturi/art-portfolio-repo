@@ -69,6 +69,10 @@ export default function Work() {
           </p>
           {art.quote && <p className={styles.quote}>{art.quote}</p>}
           <p className={styles.description}>{emphasise(descriptionOf(art))}</p>
+          <p className={styles.zoomHint}>
+            <span aria-hidden="true">&#10530;</span> Click any image to view it
+            full screen
+          </p>
         </header>
       </aside>
 

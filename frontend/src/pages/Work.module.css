@@ -75,6 +75,21 @@
   hyphens: auto;
 }
 
+.zoomHint {
+  margin: 1.4rem 0 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.zoomHint span {
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
 .stages {
   display: flex;
   flex-direction: column;
