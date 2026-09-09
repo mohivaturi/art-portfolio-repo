@@ -211,54 +211,80 @@
 }
 
 @media (max-width: 768px) {
-  /* video becomes a framed banner up top; the card sits below on solid bg */
+  /* the media rides at the top as an in-flow banner; the card sits below it
+     on a solid surface. No absolute positioning games -> predictable. */
   .hero {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     min-height: 100dvh;
-    padding: 0 1.1rem 2.5rem;
+    padding: 0 0 2.5rem;
+    overflow-x: clip;
   }
+
   .bg {
-    bottom: auto;
-    height: 50vh;
+    position: relative;
+    inset: auto;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 44vh;
   }
   .bgSacred {
     /* keep the deity's face and torso in frame */
-    object-position: 50% 20%;
+    object-position: 50% 16%;
   }
   .bgStylised {
-    /* keep the figure in frame; only one video is mounted on mobile so it is
-       always the visible one */
+    /* only one video is mounted on phones, so it is always the visible one */
     opacity: 1;
-    object-position: 70% 30%;
+    object-position: 64% 18%;
   }
+
+  /* fade the foot of the banner into the page */
   .scrim {
-    bottom: auto;
-    height: 50vh;
+    inset: 0 0 auto 0;
+    height: 44vh;
     background: linear-gradient(
       to bottom,
       rgba(11, 10, 9, 0) 58%,
       var(--bg) 100%
     );
   }
+
   .card {
-    width: 100%;
-    min-width: 0;
-    max-width: 26rem;
-    margin: calc(50vh + 1.4rem) auto 0;
-    gap: 0.9rem;
-    padding: 1.5rem 1.3rem 1.7rem;
+    position: relative;
+    z-index: 3;
+    width: calc(100% - 2.2rem);
+    max-width: 23rem;
+    margin: -2.75rem auto 0;
+    gap: 0.8rem;
+    padding: 1.4rem 1.2rem 1.6rem;
     background: var(--bg-raise);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-color: var(--line);
-    box-shadow: none;
+    box-shadow: 0 -14px 34px rgba(0, 0, 0, 0.45);
   }
+
   .signature {
-    width: min(58vw, 12rem);
+    width: min(56vw, 11rem);
+  }
+  .name {
+    font-size: 0.7rem;
+    letter-spacing: 0.26em;
+  }
+  .switchLabel {
+    font-size: 0.52rem;
+  }
+  .toggle {
+    width: 100%;
   }
   .toggleOption {
-    font-size: 0.6rem;
-    letter-spacing: 0.16em;
-    padding: 0.55rem 0.4rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    padding: 0.55rem 0.3rem;
+  }
+  .enter {
+    font-size: 0.68rem;
+    padding: 0.7rem 1.6rem;
   }
 }
