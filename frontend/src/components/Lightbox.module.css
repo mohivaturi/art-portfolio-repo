@@ -1,0 +1,144 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.75rem, 3vw, 2.5rem);
+  background: rgba(8, 7, 6, 0.97);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: fade 0.2s ease both;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.stage {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - 5rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.imgReady {
+  opacity: 1;
+}
+
+.invert {
+  filter: invert(1);
+  border-color: transparent;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.count {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.1em;
+  color: var(--ink-dim);
+}
+
+/* --- controls --- */
+.close,
+.nav {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.close:hover,
+.nav:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.close:focus-visible,
+.nav:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.close {
+  top: clamp(0.75rem, 2.5vw, 1.5rem);
+  right: clamp(0.75rem, 2.5vw, 1.5rem);
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.9rem;
+  line-height: 1;
+  padding-bottom: 0.2rem;
+}
+
+.prev {
+  left: clamp(0.5rem, 2vw, 1.75rem);
+}
+.next {
+  right: clamp(0.5rem, 2vw, 1.75rem);
+}
+
+@media (max-width: 560px) {
+  .nav {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.6rem;
+  }
+  .img {
+    max-height: calc(100dvh - 4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop {
+    animation: none;
+  }
+  .img {
+    transition: none;
+  }
+}

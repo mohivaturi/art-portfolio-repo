@@ -1,6 +1,8 @@
 import type { MouseEvent, ReactNode } from 'react'
+import { useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { bySlug, byStyle, descriptionOf } from '../data/artworks'
+import Lightbox from '../components/Lightbox.tsx'
 import styles from './Work.module.css'
 
 // render *word* as emphasis so terms like *nijarupa* sit in italic
@@ -19,6 +21,7 @@ export default function Work() {
   const navigate = useNavigate()
   const location = useLocation()
   const art = bySlug(slug)
+  const [zoomed, setZoomed] = useState<number | null>(null)
 
   // if we arrived from within the app, go back so the gallery keeps its
   // scroll position; on a cold load (shared link) let the <Link> navigate
@@ -76,16 +79,23 @@ export default function Work() {
               {art.stages.length > 1 && (
                 <span className={styles.stageLabel}>{stage.label}</span>
               )}
-              <img
-                className={
-                  stage.invert
-                    ? `${styles.stageImg} ${styles.stageImgInvert}`
-                    : styles.stageImg
-                }
-                src={stage.src}
-                alt={`${art.title} — ${stage.label}`}
-                loading={n === 0 ? 'eager' : 'lazy'}
-              />
+              <button
+                type="button"
+                className={styles.stageZoom}
+                onClick={() => setZoomed(n)}
+                aria-label={`View ${art.title} — ${stage.label} full screen`}
+              >
+                <img
+                  className={
+                    stage.invert
+                      ? `${styles.stageImg} ${styles.stageImgInvert}`
+                      : styles.stageImg
+                  }
+                  src={stage.src}
+                  alt={`${art.title} — ${stage.label}`}
+                  loading={n === 0 ? 'eager' : 'lazy'}
+                />
+              </button>
             </figure>
           ))}
         </div>
@@ -113,6 +123,21 @@ export default function Work() {
           )}
         </nav>
       </div>
+
+      {zoomed !== null && (
+        <Lightbox
+          slides={art.stages.map((s) => ({
+            src: s.src,
+            label: art.stages.length > 1 ? s.label : undefined,
+            alt: `${art.title} — ${s.label}`,
+            invert: s.invert,
+          }))}
+          index={zoomed}
+          title={art.title}
+          onClose={() => setZoomed(null)}
+          onIndexChange={setZoomed}
+        />
+      )}
     </article>
   )
 }

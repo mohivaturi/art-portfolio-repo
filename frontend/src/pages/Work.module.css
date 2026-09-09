@@ -96,6 +96,52 @@
   color: var(--ink-dim);
 }
 
+/* the image doubles as a button that opens the full-screen view */
+.stageZoom {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  line-height: 0;
+  cursor: zoom-in;
+}
+.stageZoom:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* small "expand" cue so the tap target is discoverable */
+.stageZoom::after {
+  content: '\2922';
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.stageZoom:hover::after,
+.stageZoom:focus-visible::after {
+  opacity: 1;
+}
+@media (hover: none) {
+  .stageZoom::after {
+    opacity: 0.8;
+  }
+}
+
 .stageImg {
   display: block;
   width: auto;
@@ -104,6 +150,17 @@
   max-height: 82vh;
   height: auto;
   border: 1px solid var(--line);
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.stageZoom:hover .stageImg {
+  border-color: var(--accent);
+  box-shadow: 0 0 26px var(--accent-glow);
+}
+.stageZoom:hover .stageImgInvert {
+  border-color: transparent;
 }
 
 /* white-paper drawings -> light-on-dark so they sit in the theme */
