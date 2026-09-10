@@ -27,7 +27,7 @@ PROD = EnvConfig(
     name="prod",
     prefix="prod-portfolio",
     domain_name="mohithivaturi.art",
-    hosted_zone_id=None,  # TODO: set after the Route 53 zone exists
+    hosted_zone_id="Z06956111MLKNVXEQWRFK",  # Route 53 zone for mohithivaturi.art
 )
 
 ENVIRONMENTS: dict[str, EnvConfig] = {
