@@ -12,16 +12,16 @@
     />
     <link rel="canonical" href="https://mohithivaturi.art/" />
 
-    <!-- Open Graph / social share -->
+    <!-- Open Graph / social share. Relative image + no absolute og:url so the
+         card resolves against whatever host serves the page (dev CDN or prod). -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Mohith Ivaturi" />
-    <meta property="og:url" content="https://mohithivaturi.art/" />
     <meta property="og:title" content="Mohith Ivaturi, Illustration" />
     <meta
       property="og:description"
       content="Devotional studies of Hindu deities, a stylised body of work, and traditional pencil portraits — each from rough sketch to final."
     />
-    <meta property="og:image" content="https://mohithivaturi.art/og.jpg" />
+    <meta property="og:image" content="/og.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
@@ -35,7 +35,7 @@
       name="twitter:description"
       content="Devotional studies of Hindu deities, a stylised body of work, and traditional pencil portraits — each from rough sketch to final."
     />
-    <meta name="twitter:image" content="https://mohithivaturi.art/og.jpg" />
+    <meta name="twitter:image" content="/og.jpg" />
   </head>
   <body>
     <div id="root"></div>
